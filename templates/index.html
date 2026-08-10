@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/about.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container-start">
+        <div class="header-container">
+            <header id="navbar">
+                <div class="nav-container">
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'core/asset/true.png' %}" alt="Trinity Logo">
+                        <div class="logo-text">
+                            <span class="title">Trinity</span>
+                            <span class="subtitle">Real Estate University</span>
+                        </div>
+                    </a>
+                    
+                    <nav class="desktop-nav">
+                        <a href="index.html" class="active">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="cohort.html">Cohorts</a>
+                        <a href="gallery.html">Gallery</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                    
+                    <div class="nav-actions">
+                        <a href="apply.html" class="apply-btn">Apply Now</a>
+                        <button id="menuBtn" class="menu-btn">
+                            <span id="menuIcon">&#9776;</span>
+                        </button>
+                    </div>
+                
+                </div>
+                
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="cohort.html">Cohorts</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="apply.html" class="mobile-apply">Apply Now</a>
+                </div>
+            
+            </header>
+        </div>
+
+        <!-- =========================HERO SECTION START========================== -->
+        <section class="relative flex min-h-screen flex-col overflow-hidden bg-white pt-[80px]">
+            <div class="relative z-10 mx-auto grid w-full max-w-[1440px] flex-1 grid-cols-1 items-center gap-12 px-6 py-12 lg:grid-cols-2 lg:gap-8 lg:px-[70px]">
+                <div class="treu-hero__content order-2 flex flex-col lg:order-1">
+                    <h1 class="hero-enter hero-enter--up mb-6 text-[clamp(2.25rem,4.5vw,4.5rem)] font-extrabold leading-[1.15] tracking-tight text-neutral-950" style="--hero-delay:200ms">Building 
+                        <span class="text-[#3A1AB6]">a</span> Career<!-- --> 
+                        <span class="text-[#3A1AB6]">That Shapes</span> The Future Through<!-- --> 
+                        <span class="text-[#3A1AB6]">Real Estate</span>
+                    </h1>
+                    <p class="hero-enter hero-enter--up mb-10 w-full text-[1.0625rem] leading-relaxed text-neutral-700" style="--hero-delay:340ms">At Trinity Real Estate University, we believe real estate success is built through knowledge, strategic positioning, and the confidence to take action</p>
+                    <div class="hero-enter hero-enter--up flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8" style="--hero-delay:480ms">
+                        <a href="apply.html" class="treu-btn-primary inline-flex h-[56px] cursor-pointer items-center justify-center gap-2.5 rounded-[10px] bg-[#3A1AB6] px-8 text-[0.9375rem] font-medium text-white shadow-[0_8px_20px_-10px_rgba(0,146,89,0.35)] transition-colors hover:bg-[#000]">Apply Now
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right size-4" aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <a href="cohort.html" class="treu-btn-secondary text-[0.9375rem] font-medium text-neutral-900 underline decoration-neutral-300 underline-offset-[6px] transition-colors hover:text-[#1C5DFE] hover:decoration-[#3A1AB6]">Explore Our Cohorts</a>
+                    </div>
+                </div>
+                <!-- RIGHT IMAGES -->
+                <div class="treu-hero__gallery hero-enter hero-enter--scale order-1 hidden justify-center lg:order-2 lg:flex lg:justify-end" style="--hero-delay:260ms">
+                    <img src="{% static 'core/asset/hero.png' %}" alt="Consulting sessions in progress" class="h-auto w-full max-w-[560px] object-contain">
+                </div>
+            </div>
+            
+        </section>
+        <!-- =========================HERO SECTION START========================== -->
+
+        <!-- =========================LOGOS SECTION START========================== -->
+        <div class="logos">
+            <div class="logos-slide">
+                <div class="service-card">Land Sales</div>
+                <div class="service-card">Residential Rentals</div>
+                <div class="service-card">Property Developments</div>
+                <div class="service-card">Property Investment</div>
+                <div class="service-card">Property Management</div>
+                <div class="service-card">Real Estate Marketing</div>
+            </div>
+
+            <!-- Duplicate for seamless infinite animation -->
+            <div class="logos-slide">
+                <div class="service-card">Land Sales</div>
+                <div class="service-card">Residential Rentals</div>
+                <div class="service-card">Property Developments</div>
+                <div class="service-card">Property Investment</div>
+                <div class="service-card">Property Management</div>
+                <div class="service-card">Real Estate Marketing</div>
+            </div>
+        </div>
+        <!-- =========================LOGOS SECTION END========================== -->
+
+        <!-- TRUE INTRODUCTION START-->
+        <section class="bg-white py-12 lg:py-24">
+            <div class="true-intro mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-10 px-6 lg:grid-cols-2 lg:gap-16 lg:px-[70px]">
+                <div class="scroll-reveal scroll-reveal--slide-right scroll-reveal--ready is-in-view h-full" style="--reveal-delay:0ms">
+                    <img src="{% static 'core/asset/one.jpg' %}" alt="Femi Lazarus Consulting leadership session" class="h-full min-h-[320px] w-full rounded-2xl object-cover">
+                </div>
+                
+                <div class="scroll-reveal scroll-reveal--slide-left scroll-reveal--ready is-in-view" style="--reveal-delay:120ms">
+                    <div class="flex flex-col">
+                        <div class="mb-6 flex items-center gap-3">
+                            <span aria-hidden="true" class="flex shrink-0 items-center">
+                                <span class="size-4 rounded-full bg-[#E3F7EC]"></span>
+                                <span class="h-4 w-2 rounded-l-full bg-[#B6F0D2]"></span>
+                                <span class="h-4 w-2 rounded-l-full bg-[#0A0A0A]"></span>
+                            </span>
+                            <span class="text-[13px] font-semibold tracking-[0.18em] text-neutral-900 uppercase">Introduction</span>
+                        </div>
+                        
+                        <h2 class="mb-6 text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.15] tracking-tight text-neutral-950">Train, Position, Empower</h2>
+
+                        <div class="flex flex-col gap-4 text-[0.9375rem] leading-relaxed text-neutral-700">
+                            <p>Trinity Real Estate University (TREU) was established in January 2025 with a clear mandate: to train, position, and empower individuals with advanced real estate knowledge, strategic insight, and wealth-building capabilities.</p>
+                            <p>We combine classroom learning, mentorship, field experience, and real-world projects to prepare students for opportunities across the real estate ecosystem.</p>
+                        </div>
+                        
+                        <div class="mt-8 flex flex-col gap-4 rounded-2xl bg-[#E3F7EC] p-7 text-[0.9375rem] italic leading-relaxed text-[#00794A]">
+                            <p>"Our commitment goes beyond teaching theory. We prepare students with the confidence, practical skills, and professional mindset required to thrive in today's real estate industry."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TRUE INTRODUCTION END-->
+
+        <!-- WHY TRINITY START  -->
+        <section class="">
+            <div class="container-page why-trinity">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-accent-foreground/80">
+                        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>Why Trinity
+                    </div>
+                    <h2 class="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-primary leading-[1.05]">An education engineered for the real world</h2>
+                    <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">Every part of the curriculum was built by senior operators — nothing you learn is theoretical filler.</p>
+                </div>
+                
+                <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 0ms;">
+                        <div class="card-elev card-elev-hover group p-7 h-full">
+                            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap h-5 w-5" aria-hidden="true">
+                                    <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path>
+                                    <path d="M22 10v6"></path>
+                                    <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
+                                </svg>
+                            </div>
+                            
+                            <h3 class="mt-6 font-display text-xl font-semibold text-primary">Industry Experts</h3>
+                            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Learn directly from senior professionals shaping the real estate market today.</p>
+                        </div>
+                    </div>
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 60ms;">
+                        <div class="card-elev card-elev-hover group p-7 h-full">
+                            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 lucide-building-2 h-5 w-5" aria-hidden="true">
+                                    <path d="M10 12h4"></path>
+                                    <path d="M10 8h4"></path>
+                                    <path d="M14 21v-3a2 2 0 0 0-4 0v3"></path>
+                                    <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"></path>
+                                    <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path>
+                                </svg>
+                            </div>
+                            <h3 class="mt-6 font-display text-xl font-semibold text-primary">Practical Learning</h3>
+                            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Case studies, live deals, and project-based training modeled on real transactions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 120ms;">
+                        <div class="card-elev card-elev-hover group p-7 h-full">
+                            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award h-5 w-5" aria-hidden="true">
+                                    <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
+                                    <circle cx="12" cy="8" r="6"></circle>
+                                </svg>
+                            </div>
+                            <h3 class="mt-6 font-display text-xl font-semibold text-primary">Certification</h3>
+                            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Earn a Trinity certificate recognized by leading firms across the industry.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 180ms;">
+                        <div class="card-elev card-elev-hover group p-7 h-full">
+                            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-5 w-5" aria-hidden="true">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <h3 class="mt-6 font-display text-xl font-semibold text-primary">Networking</h3>
+                            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Join an exclusive alumni community with introductions to hiring partners.</p>
+                        </div>
+                    </div>
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 240ms;">
+                        <div class="card-elev card-elev-hover group p-7 h-full">
+                            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-5 w-5" aria-hidden="true">
+                                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <h3 class="mt-6 font-display text-xl font-semibold text-primary">Site Inspection</h3>
+                            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Structured field visits to premium developments, land deals, and active sites.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 300ms;">
+                        <div class="card-elev card-elev-hover group p-7 h-full">
+                            <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase h-5 w-5" aria-hidden="true">
+                                    <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                    <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                                </svg>
+                            </div>
+                            <h3 class="mt-6 font-display text-xl font-semibold text-primary">Internship</h3>
+                            <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Placement pipeline into partner firms so you graduate with real experience.</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!-- WHY TRINITY END  -->
+
+        <!-- PROGRAM START -->
+        <div class="container-page program-start">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-accent-foreground/80">
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>Programs
+                </div>
+                <h2 class="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-primary leading-[1.05]">Choose a track. Master a discipline.</h2>
+                <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">We offer several specialized tracks, each taught by senior practitioners in that field.</p>
+            </div>
+            <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 0ms;">
+                    <div class="card-elev card-elev-hover group h-full p-6 flex flex-col">
+                        <div class="flex items-center justify-between">
+                            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building h-5 w-5" aria-hidden="true">
+                                    <path d="M12 10h.01"></path>
+                                    <path d="M12 14h.01"></path>
+                                    <path d="M12 6h.01"></path>
+                                    <path d="M16 10h.01"></path>
+                                    <path d="M16 14h.01"></path>
+                                    <path d="M16 6h.01"></path>
+                                    <path d="M8 10h.01"></path>
+                                    <path d="M8 14h.01"></path>
+                                    <path d="M8 6h.01"></path>
+                                    <path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path>
+                                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                                </svg>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4 text-muted-foreground group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 font-display text-lg font-semibold text-primary">Property Management</h3>
+                        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Operations, leasing, tenant relations, and asset performance.</p>
+                    </div>
+                </div>
+                <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 40ms;">
+                    <div class="card-elev card-elev-hover group h-full p-6 flex flex-col">
+                        <div class="flex items-center justify-between">
+                            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up h-5 w-5" aria-hidden="true">
+                                    <path d="M16 7h6v6"></path>
+                                    <path d="m22 7-8.5 8.5-5-5L2 17"></path>
+                                </svg>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4 text-muted-foreground group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 font-display text-lg font-semibold text-primary">Property Investment</h3>
+                        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Underwriting, deal analysis, portfolio strategy, and capital raising.</p>
+                    </div>
+                </div>
+                <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 80ms;">
+                    <div class="card-elev card-elev-hover group h-full p-6 flex flex-col">
+                        <div class="flex items-center justify-between">
+                            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hard-hat h-5 w-5" aria-hidden="true">
+                                    <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path>
+                                    <path d="M14 6a6 6 0 0 1 6 6v3"></path>
+                                    <path d="M4 15v-3a6 6 0 0 1 6-6"></path>
+                                    <rect x="2" y="15" width="20" height="4" rx="1"></rect>
+                                </svg>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4 text-muted-foreground group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 font-display text-lg font-semibold text-primary">Construction Management</h3>
+                        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Project delivery, quantity surveying, and contract administration.</p>
+                    </div>
+                </div>
+                <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 120ms;">
+                    <div class="card-elev card-elev-hover group h-full p-6 flex flex-col">
+                        <div class="flex items-center justify-between">
+                            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handshake h-5 w-5" aria-hidden="true">
+                                    <path d="m11 17 2 2a1 1 0 1 0 3-3"></path>
+                                    <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"></path>
+                                    <path d="m21 3 1 11h-2"></path>
+                                    <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"></path>
+                                    <path d="M3 4h8"></path>
+                                </svg>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-4 w-4 text-muted-foreground group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 font-display text-lg font-semibold text-primary">Real Estate Sales</h3>
+                        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Prospecting, closing, luxury sales playbooks, and client advisory.</p>
+                    </div>
+                </div>
+                
+            </div>
+        <!-- PROGRAMS END -->
+
+        <!-- RECOMMENDATION START -->
+        <section class="recommend py-24 md:py-32">
+            <div class="container-page">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-accent-foreground/80">
+                        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>Student Stories
+                    </div>
+                    <h2 class="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-primary leading-[1.05]">Real graduates. Real transitions.</h2>
+                </div>
+                
+                <div class="mt-16 grid gap-6 lg:grid-cols-3">
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 0ms;">
+                        <figure class="card-elev card-elev-hover p-8 h-full flex flex-col">
+                            <div class="flex gap-0.5 text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                            </div>
+                            
+                            <blockquote class="mt-5 font-display text-lg leading-relaxed text-primary">"I am deeply grateful to Trinity Real Estate University team for this life-changing opportunity to learn and grow. The depth of knowledge, clarity of teaching and genuine commitment of teaching to empowering students have completely transformed my perspective about real estate."</blockquote>
+                            <figcaption class="mt-auto pt-6 flex items-center gap-3">
+                                <div class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-primary-foreground font-display font-semibold">O</div>
+                                <div>
+                                    <div class="text-sm font-semibold text-primary">Orison</div>
+                                    <div class="text-xs text-muted-foreground">Student - Cohort 4</div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 80ms;">
+                        <figure class="card-elev card-elev-hover p-8 h-full flex flex-col">
+                            <div class="flex gap-0.5 text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                            </div>
+                            <blockquote class="mt-5 font-display text-lg leading-relaxed text-primary">"Trinity Real Estate University classes are indeed a gamechanger and a turning point for anyone looking to break into real estate. The value i am getting in our classes are indeed a business school standard. The courses lays the foundation to succeeding in the real estate business."</blockquote>
+                            <figcaption class="mt-auto pt-6 flex items-center gap-3">
+                                <div class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-primary-foreground font-display font-semibold">SJ</div>
+                                <div>
+                                    <div class="text-sm font-semibold text-primary">Sylvester Joseph</div>
+                                    <div class="text-xs text-muted-foreground">Student - Cohort 4</div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="transition-all duration-700 ease-out will-change-transform opacity-100 translate-y-0" style="transition-delay: 160ms;">
+                        <figure class="card-elev card-elev-hover p-8 h-full flex flex-col">
+                            <div class="flex gap-0.5 text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-4 w-4 fill-accent" aria-hidden="true">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                            </div>
+                            <blockquote class="mt-5 font-display text-lg leading-relaxed text-primary">"I can't be exhausted and appreciate the Trinity Real Estate University team for organising this. I know that making it monetary free is a divine order and most of us really pay absolutely and rapt attention all through the lecture. I am really cooked and more mature in the real estate industry."</blockquote>
+                            <figcaption class="mt-auto pt-6 flex items-center gap-3">
+                                <div class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-primary-foreground font-display font-semibold">CN</div>
+                                <div>
+                                    <div class="text-sm font-semibold text-primary">Francis</div>
+                                    <div class="text-xs text-muted-foreground">Student - Cohort 4</div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- RECOMMENDATION END -->
+    </div>
+
+    <!-- Footer Start -->
+        <footer class="bg-[#3A1AB6] text-white pt-16 pb-8 px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- Top Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <!-- Brand -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="footer_logo">
+                                <img src="{% static 'core/asset/true.png' %}" alt="Trinity Real Estate University Logo" width: 30px; class="w-24">
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-white/70 leading-relaxed max-w-xs">
+                            Training the next generation of real estate professionals through practical learning, mentorship, and career-first design.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                            <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                            <li><a href="cohort.html" class="hover:text-white transition">Cohorts</a></li>
+                            <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                            <li><a href="apply.html" class="hover:text-white transition">Apply Now</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Programs -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Programs</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition">Land Sales</a></li>
+                            <li><a class="hover:text-white transition">Residential Rentals</a></li>
+                            <li><a class="hover:text-white transition">Property Developments</a></li>
+                            <li><a class="hover:text-white transition">Property Investment</a></li>
+                            <li><a class="hover:text-white transition">Property Management</a></li>  
+                            <li><a class="hover:text-white transition">Real Estate Marketing</a></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Contact</h4>
+                        <ul class="space-y-3 text-sm text-white/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 4h16v16H4z"/>
+                                    <path d="M22 6l-10 7L2 6"/>
+                                </svg>
+                                info@true.academy
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.12.89.37 1.75.73 2.55a2 2 0 0 1-.45 2.11L10 11a16 16 0 0 0 5 5l1.62-1.37a2 2 0 0 1 2.11-.45c.8.36 1.66.61 2.55.73a2 2 0 0 1 1.72 2z"/>
+                                </svg>
+                                +234 704 868 4792
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+                                    <circle cx="12" cy="11" r="2"/>
+                                </svg>
+                                5, Soji Adepegba Close, off Allen Avenue, Ikeja, Lagos.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ✅ Social Media Row -->
+                <div class="mt-12 flex justify-center gap-4">
+                    <a href="https://www.facebook.com/share/1SJHC62rsC/" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/trinityrealestate_university?igsh=MWp5eG5kMmJrN2o0eA==" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17" cy="7" r="1.5"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- <a href="https://www.tiktok.com/@lightcampglobal?_r=1&_t=ZS-95XHobwbUur" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 3v10.5a4.5 4.5 0 1 1-4.5-4.5" />
+                            <path d="M14 3c1.5 2.5 3.5 3.5 6 3.5" />
+                        </svg>
+                    </a>
+
+                    <a href="https://youtube.com/@thenurturedvineministries?si=c_urmYxF0VRnpWzr" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 12s0-4-1-6c-1-1-6-1-9-1s-8 0-9 1c-1 2-1 6-1 6s0 4 1 6c1 1 6 1 9 1s8 0 9-1c1-2 1-6 1-6z"/>
+                            <polygon points="10 15 15 12 10 9 10 15"/>
+                        </svg>
+                    </a> -->
+                    
+                    <!-- WhatsApp (NEW) -->
+                    <!-- <a href="https://whatsapp.com/channel/0029VbCazs14IBhHDxgaRd2F" class="social-icon text-gray-400 hover:text-green-500 transition duration-300 transform hover:scale-110">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M20.52 3.48A11.8 11.8 0 0012.05 0C5.54 0 .2 5.34.2 11.86c0 2.09.55 4.13 1.6 5.92L0 24l6.36-1.67a11.8 11.8 0 005.69 1.45h.01c6.51 0 11.85-5.34 11.85-11.86
+                            0-3.17-1.23-6.15-3.39-8.44zM12.06 21.3a9.4 9.4 0 01-4.8-1.32l-.34-.2-3.78.99 1.01-3.68-.22-.38a9.3 9.3 0 01-1.43-5c0-5.16 4.2-9.36 9.37-9.36
+                            2.5 0 4.85.97 6.62 2.74a9.3 9.3 0 012.75 6.62c0 5.17-4.2 9.37-9.37 9.37zm5.16-7.02c-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14
+                            -.19.28-.73.91-.9 1.1-.16.19-.33.21-.61.07-.28-.14-1.2-.44-2.28-1.4-.84-.75-1.4-1.67-1.56-1.95-.16-.28-.02-.43.12-.57.12-.12.28-.33.42-.49
+                            .14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.49.07-.75.35-.26.28-1 1-1 2.44
+                            0 1.44 1.02 2.84 1.16 3.03.14.19 2 3.06 4.84 4.29.68.29 1.2.46 1.61.59.68.22 1.3.19 1.79.11.55-.08 1.66-.68 1.9-1.33.23-.65.23-1.21.16-1.33
+                             -.07-.12-.26-.19-.54-.33z"/>
+                        </svg>
+                    </a> -->
+                
+                </div>
+                
+                <!-- Divider -->
+                <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-white/60 gap-4">
+                    <p>© 2026 Trinity Real Estate University. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+    
+    <script src="{% static 'core/js/app.js' %}"></script>
+</body>
+</html>

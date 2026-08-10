@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'core/css/contact.css' %}">
+    <link rel="shortcut icon" href="{% static 'core/asset/true.png' %}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container-start">
+        <div class="header-container">
+            <header id="navbar">
+                <div class="nav-container">
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'core/asset/true.png' %}" alt="Trinity Logo">
+                        <div class="logo-text">
+                            <span class="title">Trinity</span>
+                            <span class="subtitle">Real Estate University</span>
+                        </div>
+                    </a>
+                    
+                    <nav class="desktop-nav">
+                        <a href="index.html" class="active">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="cohort.html">Cohorts</a>
+                        <a href="gallery.html">Gallery</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                    
+                    <div class="nav-actions">
+                        <a href="apply.html" class="apply-btn">Apply Now</a>
+                        <button id="menuBtn" class="menu-btn">
+                            <span id="menuIcon">&#9776;</span>
+                        </button>
+                    </div>
+                
+                </div>
+                
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="cohort.html">Cohorts</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="apply.html" class="mobile-apply">Apply Now</a>
+                </div>
+            
+            </header>
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <section class="bg-[#173b70] text-white py-16 mt-16 px-6 md:px-12 lg:px-20 overflow-hidden">
+            <div class="max-w-6xl mx-auto space-y-6">
+                <p class="text-sm tracking-widest text-yellow-400 uppercase animate-fade-in">Contact</p>
+                <h2 class="text-3xl md:text-5xl font-bold leading-tight animate-slide-up">
+                    Get in  
+                    <span class="text-yellow-400 italic font-semibold">Touch</span>
+                </h2>
+                
+                <p class="text-gray-200 max-w-3xl text-base md:text-lg animate-fade-in delay-200">We'd love to hear from you. Reach out with <br> questions, partnerships, or just to say hello.</p>
+            </div>
+        </section>
+        <!-- ABOUT SECTION END -->
+         
+        <!-- CONTACT INFORMATION -->
+        <section class="bg-[#f7f5f2] py-20 px-4">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+                <!-- ================= LEFT SIDE ================= -->
+                <div class="animate-fade-up">
+                    <p class="text-xs tracking-widest text-green-700 uppercase mb-3">We’re Here to Help</p>
+                    <h2 class="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4 leading-tight">
+                        Let's Start a 
+                        <span class="text-yellow-500 italic">Conversation</span>
+                    </h2>
+                    
+                    <p class="text-gray-600 mb-8">
+                       Whether you’re interested in our programs, looking to enrol, exploring a partnership, or simply want to learn more about Trinity Real Estate University, we’d love to hear from you.
+                    </p>
+                    
+                    <!-- Partnership Card -->
+                    <div class="relative bg-[#3A1AB6] text-white rounded-2xl p-6 overflow-hidden">
+                        <!-- Background Shape -->
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-green-700 rounded-full opacity-40 blur-xl"></div>
+                        <div class="relative z-10 flex items-start gap-4">
+                            <!-- SVG Icon -->
+                            <div class=" flex items-center justify-center rounded-full bg-[#173b70]">
+                                <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2" d="M12 21s-6-4.35-9-8.5A5.5 5.5 0 0112 5a5.5 5.5 0 019 7.5C18 16.65 12 21 12 21z"/>
+                                </svg>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-semibold mb-1">Partnership & Collaboration</h3>
+                                <p class="text-sm text-green-100 mb-3">
+                                    We’re open to meaningful partnerships with individuals and organizations committed to advancing real estate education.
+                                </p>
+                                
+                                <p class="text-sm font-medium">
+                                    partnerships@treu.edu
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ================= RIGHT SIDE (FORM) ================= -->
+                <div class="bg-white rounded-2xl shadow-sm border overflow-hidden animate-fade-up delay-200">
+                    <!-- Form Header -->
+                    <div class="bg-[#3A1AB6] text-white p-6">
+                        <h3 class="font-semibold text-lg">Send us a Message</h3>
+                        <p class="text-sm text-green-100">
+                            Fill out the form and we'll be in touch soon.
+                        </p>
+                    </div>
+                    
+                    <!-- Form -->
+                    <form id="contactForm" class="p-6 space-y-5">
+                        <!-- Row -->
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm text-gray-600">Full Name *</label>
+                                <input id="fullName" type="text" required placeholder="Your full name" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-700 outline-none"/>
+                            </div>
+                            
+                            <div>
+                                <label class="text-sm text-gray-600">Email *</label>
+                                <input id="email" type="email" required placeholder="your@email.com" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-700 outline-none"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="text-sm text-gray-600">Phone Number *</label>
+                            <input id="phone" type="text" required placeholder="Your phone number" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-700 outline-none"/>
+                        </div>
+                        
+                        <!-- Subject -->
+                        <div>
+                            <label class="text-sm text-gray-600">Subject</label>
+                            <input id="subject" type="text" placeholder="What is this about?" class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-700 outline-none"/>
+                        </div>
+                        
+                        <!-- Message -->
+                        <div>
+                            <label class="text-sm text-gray-600">Message *</label>
+                            <textarea id="message" rows="4" required placeholder="Tell us what's on your heart..." class="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-700 outline-none"></textarea>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button id="contactSubmitBtn" type="submit" class="w-full flex items-center justify-center gap-2 bg-[#3A1AB6] hover:bg-blue-900 text-white py-3 rounded-lg transition">
+                            <!-- SVG Send Icon -->
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-width="2" d="M22 2L11 13"/>
+                                <path stroke-width="2" d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                            </svg>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- CONTACT INFORMATION -->
+         
+        <!-- Footer Start -->
+        <footer class="bg-[#3A1AB6] text-white pt-16 pb-8 px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- Top Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <!-- Brand -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="footer_logo">
+                                <img src="{% static 'core/asset/true.png' %}" alt="Trinity Real Estate University Logo" width: 30px; class="w-24">
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-white/70 leading-relaxed max-w-xs">
+                            Training the next generation of real estate professionals through practical learning, mentorship, and career-first design.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                            <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                            <li><a href="cohort.html" class="hover:text-white transition">Cohorts</a></li>
+                            <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                            <li><a href="apply.html" class="hover:text-white transition">Apply Now</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Programs -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Programs</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition">Land Sales</a></li>
+                            <li><a class="hover:text-white transition">Residential Rentals</a></li>
+                            <li><a class="hover:text-white transition">Property Developments</a></li>
+                            <li><a class="hover:text-white transition">Property Investment</a></li>
+                            <li><a class="hover:text-white transition">Property Management</a></li>  
+                            <li><a class="hover:text-white transition">Real Estate Marketing</a></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Contact</h4>
+                        <ul class="space-y-3 text-sm text-white/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 4h16v16H4z"/>
+                                    <path d="M22 6l-10 7L2 6"/>
+                                </svg>
+                                info@true.academy
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.12.89.37 1.75.73 2.55a2 2 0 0 1-.45 2.11L10 11a16 16 0 0 0 5 5l1.62-1.37a2 2 0 0 1 2.11-.45c.8.36 1.66.61 2.55.73a2 2 0 0 1 1.72 2z"/>
+                                </svg>
+                                +234 704 868 4792
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+                                    <circle cx="12" cy="11" r="2"/>
+                                </svg>
+                                5, Soji Adepegba Close, off Allen Avenue, Ikeja, Lagos.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ✅ Social Media Row -->
+                <div class="mt-12 flex justify-center gap-4">
+                    <a href="https://www.facebook.com/share/1SJHC62rsC/" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/trinityrealestate_university?igsh=MWp5eG5kMmJrN2o0eA==" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17" cy="7" r="1.5"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Divider -->
+                <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-white/60 gap-4">
+                    <p>© 2026 Trinity Real Estate University. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+    </div>
+    
+    <script src="{% static 'core/js/app.js' %}"></script>
+</body>
+</html>

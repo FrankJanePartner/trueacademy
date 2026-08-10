@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TREU × Rurblist — 8-Week Realtorship Masterclass</title>
+<link rel="stylesheet" href="{% static 'core/css/cohort.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR CONTAINER START -->
+  <div class="header-container">
+    <header id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img src="{% static 'core/asset/true.png' %}" alt="Trinity Logo">
+          <div class="logo-text">
+            <span class="title">Trinity</span>
+            <span class="subtitle">Real Estate University</span>
+          </div>
+        </a>
+        
+        <nav class="desktop-nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About</a>
+          <a href="cohort.html">Cohorts</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        
+        <div class="nav-actions">
+          <a href="apply.html" class="apply-btn">Apply Now</a>
+          <button id="menuBtn" class="menu-btn">
+            <span id="menuIcon">&#9776;</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cohort.html">Cohorts</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="apply.html" class="mobile-apply">Apply Now</a>
+      </div>
+    </header>
+  </div>
+  <!-- NAVBAR CONTAINER END -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="hero-badge-dot"></div><span>Applications Open — Cohort 5</span></div>
+      <div class="hero-partner-logos">
+        <img src="{% static 'core/asset/true.png' %}" alt="Trinity">
+        <span class="hero-partner-sep">×</span>
+        <img src="{% static 'core/asset/Rublist.png' %}" alt="rurblist">
+      </div>
+      <h1 class="hero-title">Become a<br><em>Trusted</em><br>Realtor</h1>
+      <p class="hero-subtitle">8-Week Virtual Realtorship Masterclass</p>
+      <!-- <p class="hero-desc">An intensive program designed to build credible, ethical, and successful real estate professionals — bringing together industry mentors, legal experts, developers, and experienced realtors.</p> -->
+      <div class="hero-btns">
+        <a href="apply.html" class="btn-primary">Apply for Scholarship →</a>
+        <a href="about.html" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <p class="hero-card-label">Program Value</p>
+      <div class="hero-card-value"><del>₦150,000</del></div>
+      <div class="hero-card-scholarship">✦ Fully Sponsored Scholarship</div>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-row"><span class="hero-card-row-label">Duration</span><span class="hero-card-row-val">8 Weeks</span></div>
+      <div class="hero-card-row"><span class="hero-card-row-label">Start Date</span><span class="hero-card-row-val">5th, September  2026</span></div>
+      <div class="hero-card-row"><span class="hero-card-row-label">End Date</span><span class="hero-card-row-val"> 10th, November 2026</span></div>
+      <div class="hero-card-row"><span class="hero-card-row-label">Format</span><span class="hero-card-row-val">Twice Weekly</span></div>
+
+      <div class="hero-card-cohort">
+        <div class="hero-card-cohort-dot"></div>
+        <span><strong>Cohort 5</strong> — Limited Seats Available</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="section-inner">
+    <div class="why-grid fade-up">
+      <div class="why-intro">
+        <span class="section-tag">Why This Program Exists</span>
+        <h2 class="section-title">Raising the Standard of Real <em>Estate Practice</em></h2>
+        <p>Nigeria's real estate sector is growing rapidly, yet many professionals enter the industry without structured training.</p>
+        <p>Trinity Real Estate University was created to equip realtors with the knowledge, discipline, and professional mindset required to succeed sustainably.</p>
+        <div class="why-problems">
+          <h4>Common Gaps in the Industry</h4>
+          <div class="problem-item"><div class="problem-icon"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4"/></svg></div><p>Inadequate knowledge of property documentation</p></div>
+          <div class="problem-item"><div class="problem-icon"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4"/></svg></div><p>Poor understanding of legal frameworks</p></div>
+          <div class="problem-item"><div class="problem-icon"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4"/></svg></div><p>Lack of ethical selling principles</p></div>
+          <div class="problem-item"><div class="problem-icon"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4"/></svg></div><p>Difficulty building client trust</p></div>
+          <div class="problem-item"><div class="problem-icon"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4"/></svg></div><p>No long-term career strategy or direction</p></div>
+        </div>
+      </div>
+      <div class="why-quote">
+        <blockquote>"Through this program, participants gain access to industry knowledge, mentorship, and a growing network of real estate professionals across Nigeria."</blockquote>
+        <div class="why-quote-footer"><div class="why-quote-line"></div><span class="why-quote-author">Trinity Real Estate University</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum-section" id="curriculum">
+  <div class="section-inner">
+    <div class="curriculum-intro fade-up">
+      <div>
+        <span class="section-tag">What You Will Learn</span>
+        <h2 class="section-title">8 Weeks of <em>Practical</em> Knowledge</h2>
+      </div>
+      <p class="section-lead">Participants gain hands-on knowledge across the key pillars of real estate practice.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card fade-up"><div class="module-num">01</div><h3 class="module-title">Real Estate Foundations</h3><ul class="module-topics"><li>Introduction to the real estate industry</li><li>Understanding land sizes and topography</li><li>Real estate market structure</li></ul></div>
+      <div class="module-card fade-up"><div class="module-num">02</div><h3 class="module-title">Property Documentation &amp; Legal Framework</h3><ul class="module-topics"><li>Land titles and documentation</li><li>Statutory fees in real estate</li><li>Legal compliance and due diligence</li></ul></div>
+      <div class="module-card fade-up"><div class="module-num">03</div><h3 class="module-title">Real Estate Investment &amp; Development</h3><ul class="module-topics"><li>Real estate developments and pricing</li><li>Location analysis</li><li>Property investment fundamentals</li></ul></div>
+      <div class="module-card fade-up"><div class="module-num">04</div><h3 class="module-title">Realtor Career Development</h3><ul class="module-topics"><li>Building a professional real estate career</li><li>Brand positioning for realtors</li><li>Ethical real estate practice</li></ul></div>
+      <div class="module-card fade-up"><div class="module-num">05</div><h3 class="module-title">Marketing &amp; Sales</h3><ul class="module-topics"><li>Real estate marketing fundamentals</li><li>Social media for real estate sales</li><li>Client acquisition strategies</li><li>Closing property deals</li></ul></div>
+      <div class="module-card fade-up"><div class="module-num">06</div><h3 class="module-title">Special Industry Insights</h3><ul class="module-topics"><li>Mortgage systems and financing</li><li>Joint venture partnerships</li><li>Land banking</li><li>Luxury property sales</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section class="structure-section" id="structure">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-tag">Program Structure</span>
+      <h2 class="section-title">How the <em>Masterclass</em> Works</h2>
+    </div>
+    <div class="structure-grid fade-up">
+      <ul class="structure-list">
+        <li class="structure-item">
+          <div class="structure-icon"><svg viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="#F5C800" stroke-width="1.5"/><path d="M6 9h6M6 12h4" stroke="#F5C800" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><h4>Interactive Lectures</h4><p>Live sessions with industry professionals covering real-world scenarios and applications.</p></div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2L11 7h5l-4 3 1.5 5L9 12l-4.5 3L6 10l-4-3h5z" stroke="#F5C800" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div><h4>Real-World Case Studies</h4><p>Analysis of actual real estate deals, disputes, and successes in the Nigerian market.</p></div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M4 9h10M4 13h7M4 5h10" stroke="#F5C800" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><h4>Assignments &amp; Practical Tasks</h4><p>Hands-on work that builds confidence and competence with real estate activities.</p></div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-icon"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7" r="4" stroke="#F5C800" stroke-width="1.5"/><path d="M3 16c0-3 2.7-5 6-5s6 2 6 5" stroke="#F5C800" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><h4>Brand Development Sessions</h4><p>Build your personal brand and professional positioning as a trusted realtor.</p></div>
+        </li>
+      </ul>
+      <div class="assessment-box">
+        <h3>Assessment &amp; Certification</h3>
+        <p style="color:rgba(255,255,255,0.35);font-size:0.82rem;margin-bottom:1.2rem;">Participants are assessed through:</p>
+        <div class="assessment-item"><div class="dot"></div><span>Attendance</span></div>
+        <div class="assessment-item"><div class="dot"></div><span>Assignments</span></div>
+        <div class="assessment-item"><div class="dot"></div><span>Class Participation</span></div>
+        <div class="assessment-item"><div class="dot"></div><span>Final Examination</span></div>
+        <div class="cert-badge"><div class="cert-icon">🎓</div><div><strong>TREU Certification</strong><p>Certification awarded only to participants who meet required standards. Graduates join a growing community of trained realtors across Nigeria.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section" id="schedule">
+  <div class="section-inner">
+    <div class="fade-up">
+      <span class="section-tag">Program Schedule</span>
+      <h2 class="section-title">Topics <em>Covered</em></h2>
+      <p class="section-lead">September 5th - November 10th · Twice weekly sessions</p>
+    </div>
+    <div class="schedule-grid fade-up">
+      <div class="schedule-item"><div class="schedule-num">01</div><span>Introduction to Real Estate</span></div>
+      <div class="schedule-item"><div class="schedule-num">02</div><span>Land Titles and Documentation</span></div>
+      <div class="schedule-item"><div class="schedule-num">03</div><span>Understanding Land Sizes and Topography</span></div>
+      <div class="schedule-item"><div class="schedule-num">04</div><span>Real Estate Developments, Pricing and Location</span></div>
+      <div class="schedule-item"><div class="schedule-num">05</div><span>Statutory Fees in Real Estate</span></div>
+      <div class="schedule-item"><div class="schedule-num">06</div><span>Real Estate Trajectory</span></div>
+      <div class="schedule-item"><div class="schedule-num">07</div><span>Brand Development for Realtors</span></div>
+      <div class="schedule-item"><div class="schedule-num">08</div><span>Mortgage Systems</span></div>
+      <div class="schedule-item"><div class="schedule-num">09</div><span>Real Estate Marketing and Sales</span></div>
+      <div class="schedule-item"><div class="schedule-num">10</div><span>Understanding the Rental Market</span></div>
+      <div class="schedule-item"><div class="schedule-num">11</div><span>Joint Venture Partnerships</span></div>
+      <div class="schedule-item"><div class="schedule-num">12</div><span>Land Banking</span></div>
+      <div class="schedule-item"><div class="schedule-num">13</div><span>Selling Luxury Properties</span></div>
+      <div class="schedule-item"><div class="schedule-num">14</div><span>Final Examination &amp; Graduation Ceremony</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who-section" id="who">
+  <div class="section-inner">
+    <div class="who-grid fade-up">
+      <div>
+        <span class="section-tag">Who Should Apply</span>
+        <h2 class="section-title">This Program Is <em>For You</em></h2>
+        <div class="who-profiles">
+          <div class="profile-chip"><div class="emoji">🏠</div><p>Aspiring Realtors</p></div>
+          <div class="profile-chip"><div class="emoji">🤝</div><p>New Real Estate Agents</p></div>
+          <div class="profile-chip"><div class="emoji">📢</div><p>Property Marketers</p></div>
+          <div class="profile-chip"><div class="emoji">💼</div><p>Real Estate Entrepreneurs</p></div>
+          <div class="profile-chip"><div class="emoji">📈</div><p>Property Investors</p></div>
+          <div class="profile-chip"><div class="emoji">🔄</div><p>Career Transitioners</p></div>
+        </div>
+      </div>
+      <div class="who-text">
+        <p>Whether you are just starting out or looking to formalise your practice, this masterclass provides the structured training, mentorship, and professional community you need to build a long-term career in real estate.</p>
+        <div class="scholarship-box">
+          <h4>Limited Scholarship Opportunity</h4>
+          <p class="price-del">Original Value: ₦150,000</p>
+          <div class="price-now">FULLY SPONSORED</div>
+          <p>Applications will be reviewed and shortlisted candidates notified via WhatsApp or Email. Seats are very limited.</p>
+          <a href="apply.html" class="btn-primary">Apply for Scholarship →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <!-- Footer Start -->
+        <footer class="bg-[#3A1AB6] text-white pt-16 pb-8 px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- Top Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <!-- Brand -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="footer_logo">
+                                <img src="{% static 'core/asset/true.png' %}" alt="Trinity Real Estate University Logo" width: 30px; class="w-24">
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-white/70 leading-relaxed max-w-xs">
+                            Training the next generation of real estate professionals through practical learning, mentorship, and career-first design.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                            <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                            <li><a href="cohort.html" class="hover:text-white transition">Cohorts</a></li>
+                            <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                            <li><a href="apply.html" class="hover:text-white transition">Apply Now</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Programs -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Programs</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition">Land Sales</a></li>
+                            <li><a class="hover:text-white transition">Residential Rentals</a></li>
+                            <li><a class="hover:text-white transition">Property Developments</a></li>
+                            <li><a class="hover:text-white transition">Property Investment</a></li>
+                            <li><a class="hover:text-white transition">Property Management</a></li>  
+                            <li><a class="hover:text-white transition">Real Estate Marketing</a></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Contact</h4>
+                        <ul class="space-y-3 text-sm text-white/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 4h16v16H4z"/>
+                                    <path d="M22 6l-10 7L2 6"/>
+                                </svg>
+                                info@true.academy
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.12.89.37 1.75.73 2.55a2 2 0 0 1-.45 2.11L10 11a16 16 0 0 0 5 5l1.62-1.37a2 2 0 0 1 2.11-.45c.8.36 1.66.61 2.55.73a2 2 0 0 1 1.72 2z"/>
+                                </svg>
+                                +234 704 868 4792
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+                                    <circle cx="12" cy="11" r="2"/>
+                                </svg>
+                                5, Soji Adepegba Close, off Allen Avenue, Ikeja, Lagos.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ✅ Social Media Row -->
+                <div class="mt-12 flex justify-center gap-4">
+                    <a href="https://www.facebook.com/share/1SJHC62rsC/" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/trinityrealestate_university?igsh=MWp5eG5kMmJrN2o0eA==" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17" cy="7" r="1.5"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Divider -->
+                <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-white/60 gap-4">
+                    <p>© 2026 Trinity Real Estate University. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+<script src="{% static 'core/js/cohort.js' %}"></script>
+</body>
+</html>

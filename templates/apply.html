@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — TREU × Rurblist Masterclass Cohort 4</title>
+<link rel="stylesheet" href="{% static 'core/css/apply.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="{% static 'core/asset/true.png' %}" type="image/x-icon">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<!-- NAVBAR CONTAINER START -->
+<div class="header-container">
+    <header id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <img src="{% static 'core/asset/true.png' %}" alt="Trinity Logo">
+          <div class="logo-text">
+            <span class="title">Trinity</span>
+            <span class="subtitle">Real Estate University</span>
+          </div>
+        </a>
+        
+        <nav class="desktop-nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About</a>
+          <a href="cohort.html">Cohorts</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        
+        <div class="nav-actions">
+          <a href="apply.html" class="apply-btn">Apply Now</a>
+          <button id="menuBtn" class="menu-btn">
+            <span id="menuIcon">&#9776;</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cohort.html">Cohorts</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="apply.html" class="mobile-apply">Apply Now</a>
+      </div>
+    </header>
+</div>
+<!-- NAVBAR CONTAINER END -->
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-row">
+      <div>
+        <p class="page-hero-tag">Scholarship Application · Cohort 5</p>
+        <h1>Apply for<br><em>Cohort 5</em></h1>
+        <p>Complete the form below to be considered for a fully sponsored slot in the 8-Week Realtorship Masterclass. Shortlisted candidates will be notified.</p>
+        <div class="page-hero-stats">
+          <div class="stat"><div class="stat-val">8</div><div class="stat-label">Weeks</div></div>
+          <div class="stat"><div class="stat-val">₦0</div><div class="stat-label">Your Cost</div></div>
+          <div class="stat"><div class="stat-val">5th Sept</div><div class="stat-label">Start Date</div></div>
+        </div>
+      </div>
+      <div class="progress-box">
+        <p style="color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;">Application Process</p>
+        <div class="progress-steps">
+          <div class="step-row"><div class="step-circle active">1</div><div class="step-info"><h4>Complete Application</h4><p>Fill in your details &amp; background</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-row"><div class="step-circle inactive">2</div><div class="step-info"><h4>Review &amp; Shortlisting</h4><p>Applications reviewed by TREU team</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-row"><div class="step-circle inactive">3</div><div class="step-info"><h4>Notification</h4><p>Shortlisted via WhatsApp or Email</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-row"><div class="step-circle inactive">4</div><div class="step-info"><h4>Onboarding &amp; Training</h4><p>Begin masterclass — 5th Sept 2026</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <form method="post" class="form-card" id="applicationForm" onsubmit="submitForm(event)">
+    <div class="form-section-header">
+      <h3>Scholarship Application Form</h3>
+      <p>All fields marked with <span style="color:var(--orange)">*</span> are required. Please answer honestly — selections are reviewed carefully.</p>
+    </div>
+    <div class="form-body">
+
+      <div class="form-section-divider" style="margin-top:0;padding-top:0;border-top:none">
+        <h4>Personal Information</h4>
+        <p>Tell us about yourself</p>
+      </div>
+
+      <div class="form-row another-form-row">
+        <div class="form-group another-form">
+          <label for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" placeholder="Your full name" />
+        </div>
+        <div class="form-group another-form">
+          <label for="phone">Phone Number <span class="req">*</span> <span class="hint">(WhatsApp preferred)</span></label>
+          <input type="tel" id="phone" placeholder="+234 800 000 0000" />
+        </div>
+      </div>
+      <div class="form-row another-form-row">
+        <div class="form-group another-form">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="yourname@email.com" />
+        </div>
+        <div class="form-group another-form">
+          <label for="location">City / State <span class="req">*</span></label>
+          <input type="text" id="location" placeholder="e.g. Lagos, Lagos State" />
+        </div>
+      </div>
+
+      <div class="form-section-divider">
+        <h4>Real Estate Background</h4>
+        <p>Help us understand your current involvement</p>
+      </div>
+
+      <div class="form-group">
+        <label>Are you currently involved in real estate? <span class="req">*</span></label>
+        <div class="options-group" id="involvementGroup">
+          <label class="radio-item" onclick="selectRadio(this,'involvement')"><input type="radio" name="involvement" value="full-time"><div class="custom-radio"></div><span>Yes — Full-time realtor</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'involvement')"><input type="radio" name="involvement" value="part-time"><div class="custom-radio"></div><span>Yes — Part-time realtor</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'involvement')"><input type="radio" name="involvement" value="interested"><div class="custom-radio"></div><span>Not yet, but interested</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'involvement')"><input type="radio" name="involvement" value="investor"><div class="custom-radio"></div><span>Property investor</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'involvement')"><input type="radio" name="involvement" value="other"><div class="custom-radio"></div><span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>How many years of experience do you have in real estate? <span class="req">*</span></label>
+        <div class="options-group grid-2" id="experienceGroup">
+          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="none"><div class="custom-radio"></div><span>None</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="<1yr"><div class="custom-radio"></div><span>Less than 1 year</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="1-3yr"><div class="custom-radio"></div><span>1–3 years</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="4-7yr"><div class="custom-radio"></div><span>4–7 years</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="8+yr"><div class="custom-radio"></div><span>8+ years</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Which area of real estate interests you most? <span class="req">*</span> <span class="hint">(Select all that apply)</span></label>
+        <div class="options-group grid-2" id="interest">
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Land Sales"><div class="custom-radio"></div><span>Land Sales</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Residential Rentals"><div class="custom-radio"></div><span>Residential Rentals</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Development"><div class="custom-radio"></div><span>Property Developments</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Investment"><div class="custom-radio"></div><span>Property Investment</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Management"><div class="custom-radio"></div><span>Property Management</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Real Estate Marketing"><div class="custom-radio"></div><span>Real Estate Marketing</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Other"><div class="custom-radio"></div><span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="challenge">What is your biggest challenge in real estate right now? <span class="req">*</span></label>
+        <textarea id="challenge" placeholder="Describe your current challenges, goals, or why you want to join this program..."></textarea>
+      </div>
+
+      <div class="form-section-divider">
+        <h4>Commitment &amp; Values</h4>
+        <p>This program requires full dedication</p>
+      </div>
+
+      <div class="form-group">
+        <label>This program runs for 8 weeks. Are you willing to attend all sessions? <span class="req">*</span></label>
+        <div class="options-group inline" id="attendGroup">
+          <label class="radio-item" onclick="selectRadio(this,'attend')" style="flex:1"><input type="radio" name="attend" value="yes"><div class="custom-radio"></div><span>Yes, I commit to attending all sessions</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'attend')" style="flex:1"><input type="radio" name="attend" value="no"><div class="custom-radio"></div><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Are you willing to follow ethical real estate practices taught in this program? <span class="req">*</span></label>
+        <div class="options-group inline" id="ethicsGroup">
+          <label class="radio-item" onclick="selectRadio(this,'ethics')" style="flex:1"><input type="radio" name="ethics" value="yes"><div class="custom-radio"></div><span>Yes, I commit to ethical practice</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'ethics')" style="flex:1"><input type="radio" name="ethics" value="no"><div class="custom-radio"></div><span>No</span></label>
+        </div>
+      </div>
+
+      <div class="form-section-divider">
+        <h4>How Did You Find Us?</h4>
+        <p>This helps us reach more candidates</p>
+      </div>
+
+      <div class="form-group">
+        <label>How did you hear about this program? <span class="req">*</span></label>
+        <div class="options-group grid-2">
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="instagram"><div class="custom-radio"></div><span>Instagram</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="whatsapp"><div class="custom-radio"></div><span>WhatsApp</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="facebook"><div class="custom-radio"></div><span>Facebook</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="linkedin"><div class="custom-radio"></div><span>LinkedIn</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="trinity-community"><div class="custom-radio"></div><span>Trinity Community</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="rurblist"><div class="custom-radio"></div><span>Rurblist</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="friend-referral"><div class="custom-radio"></div><span>Friend Referral</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'source')"><input type="radio" name="source" value="other"><div class="custom-radio"></div><span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Would you like to refer friends to apply for this scholarship? <span class="req">*</span></label>
+        <div class="options-group inline" id="referGroup">
+          <label class="radio-item" onclick="selectRadio(this,'refer');showReferField(true)" style="flex:1"><input type="radio" name="refer" value="yes"><div class="custom-radio"></div><span>Yes, I'd like to refer friends</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'refer');showReferField(false)" style="flex:1"><input type="radio" name="refer" value="no"><div class="custom-radio"></div><span>No</span></label>
+        </div>
+        <div class="conditional-field" id="referNumbers">
+          <label for="referPhones" style="margin-top:0.5rem">Their Phone Numbers <span class="hint">(one per line)</span></label>
+          <textarea id="referPhones" placeholder="e.g.&#10;+234 800 111 2222&#10;+234 700 333 4444" style="min-height:80px"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-submit">
+      <p class="submit-disclaimer">By submitting this application, you confirm all information provided is accurate. Shortlisted candidates will be contacted via WhatsApp or Email within a reasonable time. Trinity Real Estate University reserves the right to accept or decline any application.</p>
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span id="submitText">Submit Scholarship Application →</span>
+        <span class="spinner" id="spinner" style="display:none"></span>
+      </button>
+    </div>
+  </form>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <h4>Program at a Glance</h4>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="10" rx="1" stroke="#3D2E8E" stroke-width="1.2"/><path d="M4 1v4M10 1v4M1 7h12" stroke="#3D2E8E" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><h5>Program Dates</h5><p>5th Sept – 10th Nov 2026</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#3D2E8E" stroke-width="1.2"/><path d="M7 4v3l2 2" stroke="#3D2E8E" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><h5>Duration</h5><p>8 Weeks · Twice Weekly</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1L9 5h4l-3.5 2.5L11 12 7 9.5 3 12l1.5-4.5L1 5h4z" stroke="#3D2E8E" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><h5>Certification</h5><p>TREU Certificate on completion</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M2 10c0-2.2 2-4 5-4s5 1.8 5 4" stroke="#3D2E8E" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="4.5" r="2.5" stroke="#3D2E8E" stroke-width="1.2"/></svg></div>
+        <div><h5>Mentors</h5><p>9 industry experts across real estate</p></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>Scholarship Details</h4>
+      <div class="value-box">
+        <p class="del-price">Original Value: ₦150,000</p>
+        <div class="sponsored">FULLY SPONSORED</div>
+        <p>Your cost: ₦0</p>
+      </div>
+      <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6">Limited seats available. Applications are reviewed and shortlisted candidates notified by the TREU team.</p>
+      <div class="sidebar-divider"></div>
+      <ul class="tip-list">
+        <li>Apply as early as possible</li>
+        <li>Be honest about your experience level</li>
+        <li>Clearly describe your challenges</li>
+        <li>Commit to full attendance and ethics</li>
+      </ul>
+    </div>
+
+    <div class="dark-card">
+      <h4>Questions?</h4>
+      <p>Want to learn more about the program before applying? Visit the full program page for curriculum, mentor profiles, and schedule details.</p>
+      <a href="cohort.html">View Full Program →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer Start -->
+<footer class="bg-[#3A1AB6] text-white pt-16 pb-8 px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- Top Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <!-- Brand -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="footer_logo">
+                                <img src="{% static 'core/asset/true.png' %}" alt="Trinity Real Estate University Logo" width: 30px; class="w-24">
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-white/70 leading-relaxed max-w-xs">
+                            Training the next generation of real estate professionals through practical learning, mentorship, and career-first design.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                            <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                            <li><a href="cohort.html" class="hover:text-white transition">Cohorts</a></li>
+                            <li><a href="gallery.html" class="hover:text-white transition">Gallery</a></li>
+                            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                            <li><a href="apply.html" class="hover:text-white transition">Apply Now</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Programs -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Programs</h4>
+                        <ul class="space-y-2 text-sm text-white/70">
+                            <li><a class="hover:text-white transition">Land Sales</a></li>
+                            <li><a class="hover:text-white transition">Residential Rentals</a></li>
+                            <li><a class="hover:text-white transition">Property Developments</a></li>
+                            <li><a class="hover:text-white transition">Property Investment</a></li>
+                            <li><a class="hover:text-white transition">Property Management</a></li>  
+                            <li><a class="hover:text-white transition">Real Estate Marketing</a></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Contact</h4>
+                        <ul class="space-y-3 text-sm text-white/70">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 4h16v16H4z"/>
+                                    <path d="M22 6l-10 7L2 6"/>
+                                </svg>
+                                info@true.academy
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72c.12.89.37 1.75.73 2.55a2 2 0 0 1-.45 2.11L10 11a16 16 0 0 0 5 5l1.62-1.37a2 2 0 0 1 2.11-.45c.8.36 1.66.61 2.55.73a2 2 0 0 1 1.72 2z"/>
+                                </svg>
+                                +234 704 868 4792
+                            </li>
+                            
+                            <li class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+                                    <circle cx="12" cy="11" r="2"/>
+                                </svg>
+                                5, Soji Adepegba Close, off Allen Avenue, Ikeja, Lagos.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- ✅ Social Media Row -->
+                <div class="mt-12 flex justify-center gap-4">
+                    <a href="https://www.facebook.com/share/1SJHC62rsC/" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/trinityrealestate_university?igsh=MWp5eG5kMmJrN2o0eA==" class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17" cy="7" r="1.5"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Divider -->
+                <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-white/60 gap-4">
+                    <p>© 2026 Trinity Real Estate University. All Rights Reserved.</p>
+                </div>
+            </div>
+</footer>
+<!-- Footer End -->
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon-wrap">🎓</div>
+    <h3>Application <em>Received!</em></h3>
+    <div class="success-msg">
+      <p>
+        <strong>Thank you for applying.</strong><br><br>
+        Shortlisted candidates will receive confirmation via <strong>WhatsApp or Email</strong>.<br><br>
+        We look forward to building the next generation of <strong>trusted realtors</strong>.
+      </p>
+    </div>
+    <div class="success-highlights">
+      <span class="success-highlight">Application submitted</span>
+      <span class="success-highlight">Under review</span>
+      <span class="success-highlight">Watch your WhatsApp &amp; Email</span>
+    </div>
+    <a href="index.html" class="btn-home">← Back to Program Page</a>
+  </div>
+</div>
+
+<script src="{% static 'core/js/apply.js' %}"></script>
+</body>
+</html>

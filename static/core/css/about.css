@@ -1,0 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Bebas+Neue&family=Climate+Crisis:YEAR@1979&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Riot&family=Ranchers&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+     /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(38, 92%, 58%);
+  --first-color-light: hsl(38, 100%, 78%);
+  --first-color-alt: hsl(32, 75%, 50%);
+  --second-color: hsl(195, 75%, 52%);
+  --dark-color: hsl(212, 40%, 12%);
+  --white-color: hsl(212, 4%, 95%);
+  --body-color: hsl(212, 42%, 15%);
+  --container-color: hsl(212, 42%, 20%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Bai Jamjuree", sans-serif;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* NAVBAR START*/
+#navbar {
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+    transition:.35s;
+    background:rgba(255,255,255,.90);
+}
+
+#navbar.scrolled {
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.90);
+    border-bottom:1px solid #ececec;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.nav-container {
+    height:72px;
+    display:flex;
+    align-items:center;
+    font-family: "poppins", sans-serif;
+    font-weight: bolder;
+    justify-content:space-between;
+    padding: 1em 8%;
+    padding: 0.9rem 5%;
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+}
+
+.logo img {
+    width:35px;
+    transition:.3s;
+}
+
+.logo:hover img {
+    transform:scale(1.05);
+}
+
+.logo-text {
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
+}
+
+.title {
+    font-size:15px;
+    font-weight:700;
+    color:#0E2A52;
+}
+
+.subtitle {
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#777;
+}
+
+.desktop-nav {
+    display:flex;
+    gap:5px;
+}
+
+.desktop-nav a {
+    text-decoration:none;
+    color:#555;
+    font-size:15px;
+    padding:10px 16px;
+    transition:.3s;
+    font-weight:500;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+    color:#0E2A52;
+}
+
+.nav-actions {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.apply-btn {
+    padding:12px 24px;
+    border-radius:50px;
+    text-decoration:none;
+    background:#0E2A52;
+    color:white;
+    font-weight:600;
+    transition:.3s;
+}
+
+.apply-btn:hover {
+    background:#173b70;
+}
+
+.menu-btn {
+    display:none;
+    border:none;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.mobile-menu {
+    display:none;
+    flex-direction:column;
+    background:white;
+    border-top:1px solid #eee;
+    padding:25px;
+}
+
+.mobile-menu a {
+    text-decoration:none;
+    color:#444;
+    padding:15px 0;
+}
+
+.mobile-apply {
+    margin-top:15px;
+    text-align:center;
+    padding:14px;
+    border-radius:50px;
+    background:#0E2A52;
+    color:white !important;
+}
+
+.mobile-menu p {
+    margin-top:18px;
+    font-size:13px;
+    color:#888;
+}
+
+/* NAVBAR END*/
+
+/*  ABOUT SESSION  START*/
+
+.about-section {
+    margin-top: 4.5rem;
+}
+.about-section h2 {
+    font-family: "Fraunces", serif;
+}
+
+@layer utilities {
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease forwards;
+  }
+
+  .animate-card {
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+/*  ABOUT SESSION  END*/
+
+/*  ABOUT SESSION INFO START*/
+.about-section-info {
+    font-family: "Poppins", sans-serif;
+    color: #555;
+    padding: 3em 8%;
+    background: #f9f9f9;
+}
+
+.about-section-info h2 {
+    font-family: "Fraunces", serif;
+}
+/*  ABOUT SESSION INFO END*/
+
+/* OUR MILESTONE START */
+.our-milestone {
+    padding: 3em 8%;
+}
+
+.our-milestone h2 {
+    font-family: "Fraunces", serif;
+    color: #0c1a32;
+    background: #ffffff;
+}
+
+.bg-accent {
+    background-color:#d4a73e;;
+}
+
+.bg-accent\/10 {
+    background-color: #d4a73e1a;
+}
+
+.straight {
+    border: 1px solid #b3afa5;
+}
+
+/* OUR MILESTONE END */
+
+/* OUR VISION MISSION START */
+.our-vision-container {
+    padding: 2em 8%;
+}
+
+.card-elev {
+    background-color: #ffffff;
+    border: 1px solid #e9e2e4;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px oklch(20% .05 260 / .04), 0 8px 24px -12px oklch(20% .05 260 / .1);
+}
+
+.text-primary-foreground {
+    color: #fffafc;
+}
+
+.bg-primary {
+    background-color: #0c1a32;
+}
+
+.rounded-2xl {
+    border-radius: 32px;
+}
+
+.text-primary {
+    color: #0c1a32;
+    font-family: "Fraunces", serif;
+}
+
+.text-muted-foreground {
+    color: #0c1a32;
+}
+/* OUR VISION MISSION END */
+
+/* OUR LEADERSHIP START */
+.our-leadership {
+    padding: 3em 8%;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--white-color);
+}
+
+.our-leadership h2 {
+    font-family: "Fraunces", serif;
+    color: var(--white-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+
+.leadership-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  height: auto;
+  padding: 2rem 0;
+}
+
+.card__container {
+  padding-block: 5rem;
+}
+
+.card__content {
+  margin-inline: 1.75rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.card__article {
+  width: 300px; /* Remove after adding swiper js */
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.card__image {
+  position: relative;
+  background-color: var(--first-color-light);
+  padding-top: 1.5rem;
+  margin-bottom: -.75rem;
+}
+
+.card__data {
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.card__img {
+  width: 180px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+.card__shadow {
+  width: 200px;
+  height: 200px;
+  background-color: var(--first-color-alt);
+  border-radius: 50%;
+  position: absolute;
+  top: 3.75rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  filter: blur(45px);
+}
+
+.card__name {
+  font-size: var(--h2-font-size);
+  color: var(--second-color);
+  margin-bottom: .75rem;
+}
+
+.card__description {
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+}
+
+.card__button {
+  display: inline-block;
+  background-color: var(--first-color);
+  padding: .75rem 1.5rem;
+  border-radius: .25rem;
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+/* Swiper class */
+/* .swiper-button-prev:after,
+.swiper-button-next:after {
+  content: "";
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: initial;
+  height: initial;
+  font-size: 3rem;
+  color: var(--second-color);
+  display: none;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
+} */
+
+/* OUR LEADERSHIP END */
+
+/* CORE VALUES START */
+.core-values {
+    padding: 3em 8%;
+    background: #f9f9f9;
+}
+
+.text-accent {
+    color: #d4a73e;
+}
+/* CORE VALUES END */
+
+/* ACHIEVEMENTS START */
+.achievements {
+    padding: 3em 8%;
+}
+
+/* ACHIEVEMENTS END */
+
+/* FOOTER START */
+.footer_logo img {
+    width:35px;
+}
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .social-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    color: rgba(255,255,255,0.7);
+    transition: all 0.3s ease;
+  }
+
+  .social-icon:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+  }
+
+  .social-icon:hover svg {
+    color: #ffffff;
+  }
+
+/* FOOTER END */
+
+
+/* Responsive */
+
+/* NAVBAR START*/
+@media(max-width:992px) {
+    .desktop-nav {
+        display:none;
+    }
+    
+    .apply-btn {
+        display:none;
+    }
+    
+    .menu-btn {
+        display:block;
+    }
+    
+    .mobile-menu.show {
+        display:flex;
+    }
+
+    .our-leadership {
+        padding: 3em 4%;
+    }
+
+    .leadership-container {
+        height: auto;
+        min-height: auto;
+    }
+}
+
+@media(max-width:576px) {
+    .logo-text {
+        display:none;
+    }
+}
+
+/* NAVBAR END*/
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+/* OUR LEADERSHIP START */
+@media screen and (max-width: 320px) {
+  .card__data {
+    padding: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__content {
+    margin-inline: 3rem;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: block;
+  }
+
+  .our-leadership {
+    /* padding: 3em 4%; */
+}
+
+.leadership-container {
+    /* height: 50vh; */
+ }
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+    .our-leadership {
+        /* padding: 3em 4%; */
+    }
+
+    .leadership-container {
+        /* height: auto;
+        min-height: auto; */
+    }
+  .card__container {
+    max-width: 1120px;
+  }
+
+  .swiper-button-prev {
+    left: -1rem;
+  }
+  .swiper-button-next {
+    right: -1rem;
+  }
+}
+/* OUR LEADERSHIP END */
+.card__article{width:100%;max-width:340px;margin:0 auto;}
+.card__img{width:min(180px,70%);height:auto;display:block;}
+@media (max-width:767px){.card__container{padding-block:2rem}.card__content{margin-inline:1rem}.card__data{padding:1.25rem}.our-leadership{padding:3rem 1rem}}
