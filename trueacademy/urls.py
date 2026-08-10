@@ -15,13 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from contact.views import ContactMessageListCreateView, ContactMessageDetailView
 from applications.views import ApplicationListCreateView, ApplicationDetailView
-from gallery.views import GalleryImageListCreateView, GalleryImageDetailView
+from gallery.views import GalleryImageListCreateView, GalleryImageDetailView, GalleryCategoryListView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
@@ -32,10 +32,12 @@ urlpatterns = [
     path('contact.html', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('apply.html', TemplateView.as_view(template_name='apply.html'), name='apply'),
     path('admin/', admin.site.urls),
-    path('api/contact/', ContactMessageListCreateView.as_view(), name='contact-list-create'),
+    re_path(r'^api/contact/?$', ContactMessageListCreateView.as_view(), name='contact-list-create'),
     path('api/contact/<int:pk>/', ContactMessageDetailView.as_view(), name='contact-detail'),
-    path('api/applications/', ApplicationListCreateView.as_view(), name='application-list-create'),
+    re_path(r'^api/applications/?$', ApplicationListCreateView.as_view(), name='application-list-create'),
     path('api/applications/<int:pk>/', ApplicationDetailView.as_view(), name='application-detail'),
+
+    path('api/gallery/categories/', GalleryCategoryListView.as_view(), name='gallery-categories'),
     path('api/gallery/', GalleryImageListCreateView.as_view(), name='gallery-list-create'),
     path('api/gallery/<int:pk>/', GalleryImageDetailView.as_view(), name='gallery-detail'),
 ]

@@ -1,249 +1,224 @@
-//NAVBAR START
-const navbar = document.getElementById("navbar");
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuIcon = document.getElementById("menuIcon");
+// ── Navbar ────────────────────────────────────────────────────────────────────
+const navbar    = document.getElementById('navbar');
+const menuBtn   = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuIcon  = document.getElementById('menuIcon');
 
-// Navbar Scroll Effect
-window.addEventListener("scroll", () => {
-
-    if(window.scrollY > 8){
-
-        navbar.classList.add("scrolled");
-
-    }else{
-
-        navbar.classList.remove("scrolled");
-
-    }
-
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 8);
 });
 
-// Mobile Menu Toggle
-menuBtn.addEventListener("click", () => {
-
-    mobileMenu.classList.toggle("show");
-
-    if(mobileMenu.classList.contains("show")){
-
-        menuIcon.innerHTML = "&times;";
-
-    }else{
-
-        menuIcon.innerHTML = "&#9776;";
-
-    }
-
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('show');
+    menuIcon.innerHTML = mobileMenu.classList.contains('show') ? '&times;' : '&#9776;';
 });
 
-// Close mobile menu after clicking a link
-document.querySelectorAll(".mobile-menu a").forEach(link=>{
-
-    link.addEventListener("click",()=>{
-
-        mobileMenu.classList.remove("show");
-
-        menuIcon.innerHTML="&#9776;";
-
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+        menuIcon.innerHTML = '&#9776;';
     });
-
 });
 
-// Active Link
-const links = document.querySelectorAll(".desktop-nav a, .mobile-menu a");
+document.querySelectorAll('.desktop-nav a, .mobile-menu a').forEach(link => {
+    if (link.href === window.location.href) link.classList.add('active');
+});
+// ── End Navbar ────────────────────────────────────────────────────────────────
 
-links.forEach(link=>{
 
-    if(link.href === window.location.href){
+// ── Gallery state ─────────────────────────────────────────────────────────────
+let allGalleryImages = [];
+let currentCategorySlug = 'all';
 
-        link.classList.add("active");
+// ── Fetch + render categories ─────────────────────────────────────────────────
+async function fetchCategories() {
+    const container = document.getElementById('categoryFilters');
+    if (!container) return;
 
+    try {
+        const res = await fetch('/api/gallery/categories/');
+        if (!res.ok) throw new Error(`Categories API returned ${res.status}`);
+        const categories = await res.json();
+
+        // Build dynamic buttons
+        container.innerHTML = '';
+
+        // ALL button (active by default)
+        const allBtn = document.createElement('button');
+        allBtn.className = 'cat-btn bg-[#173b70] text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-sm';
+        allBtn.textContent = 'ALL';
+        allBtn.onclick = () => filterCategory('all', allBtn);
+        container.appendChild(allBtn);
+
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = 'cat-btn bg-white text-gray-700 hover:bg-[#173b70] hover:text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-sm';
+            btn.textContent = cat.name.toUpperCase();
+            btn.dataset.slug = cat.slug;
+            btn.onclick = () => filterCategory(cat.slug, btn);
+            container.appendChild(btn);
+        });
+    } catch (err) {
+        console.error('Could not load gallery categories:', err);
+        // Keep a static fallback for the category bar only (not image data)
+        container.innerHTML = `
+            <button onclick="filterCategory('all', this)" class="cat-btn bg-[#173b70] text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-sm">ALL</button>
+        `;
     }
-
-});
-// NAVBAR END
-
-// GALLERY PICTURES START
-// NAVBAR START
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('active');
-  }
-// NAVBAR END
-
-// GALLERY START
-// ================= DATA =================
-const galleryData = {
-  2025: [
-    { src: "asset/workshops-1.jpg" },
-    { src: "asset/workshops-2.jpg" },
-    { src: "asset/workshops-3.jpg" },
-    { src: "asset/workshops-4.jpg" },
-    { src: "asset/workshops-5.jpg" },
-    { src: "asset/workshops-6.jpg" },
-    { src: "asset/workshops-7.jpg" },
-    { src: "asset/graduation-1.jpg" },
-    { src: "asset/graduation-2.jpg" },
-    { src: "asset/graduation-3.jpg" },
-    { src: "asset/graduation-4.jpg" },
-  ],
-
-  2024: [
-    { src: "asset/workshops-1.jpg" },
-    { src: "asset/workshops-2.jpg" },
-    { src: "asset/workshops-3.jpg" },
-    { src: "asset/workshops-4.jpg" },
-    { src: "asset/workshops-5.jpg" },
-    { src: "asset/workshops-6.jpg" },
-    { src: "asset/workshops-7.jpg" },
-
-  ],
-
-  2023: [
-    { src: "asset/graduation-1.jpg" },
-    { src: "asset/graduation-2.jpg" },
-    { src: "asset/graduation-3.jpg" },
-    { src: "asset/graduation-4.jpg" },
-    { src: "asset/graduation-5.jpg" },
-    { src: "asset/graduation-6.jpg" },
-    { src: "asset/graduation-7.jpg" },
-    { src: "asset/graduation-8.jpg" },
-  ]
-};
-
-// ================= STATE =================
-let currentImages = [];
-let currentIndex = 0;
-let slideInterval;
-let selectedImages = [];
-
-// ================= RENDER =================
-function renderGallery(year) {
-  const grid = document.getElementById("galleryGrid");
-  const title = document.getElementById("galleryTitle");
-
-  const images = galleryData[year];
-  currentImages = images;
-
-  grid.innerHTML = "";
-//   title.innerText = `Light Camp ${year}`;
-
-  images.forEach((img, index) => {
-
-    const div = document.createElement("div");
-
-    div.className = "break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl";
-
-    div.innerHTML = `
-      <img src="${img.src}" loading="lazy"
-        class="w-full rounded-xl transition duration-500 group-hover:scale-105 group-hover:brightness-75">
-
-      <!-- DARK HOVER -->
-      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition"></div>
-
-      <!-- ZOOM ICON -->
-      <svg class="w-5 h-5 absolute top-3 right-3 opacity-0 group-hover:opacity-100 text-white transition"
-        fill="none" stroke="currentColor">
-        <circle cx="11" cy="11" r="8" stroke-width="2"/>
-        <path d="M21 21l-4.3-4.3" stroke-width="2"/>
-      </svg>
-
-      <!-- SELECT BUTTON -->
-      <button class="select-btn absolute top-3 left-3 bg-white/80 text-[#173b70] rounded-full w-7 h-7 flex items-center justify-center"
-        onclick="selectImage(event, '${img.src}')">
-
-        <svg class="w-4 h-4" fill="none" stroke="currentColor">
-          <path stroke-width="2" d="M5 13l4 4L19 7"/>
-        </svg>
-
-      </button>
-    `;
-
-    // div.onclick = (e) => {
-    //   if (e.target.closest(".select-btn")) return;
-    //   openLightbox(index);
-    // };
-
-    div.onclick = () => {
-  selectImage(null, img.src);
-};
-
-    grid.appendChild(div);
-  });
 }
 
-// ================= LIGHTBOX =================
-function openLightbox(index) {
-  currentIndex = index;
-  showSlide();
-  document.getElementById("lightbox").classList.remove("hidden");
+// ── Fetch + render gallery images ─────────────────────────────────────────────
+async function fetchGalleryImages() {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+
+    grid.innerHTML = `
+        <div class="col-span-full py-16 text-center text-gray-400">
+            <svg class="mx-auto mb-3 w-8 h-8 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+            </svg>
+            <p class="text-sm">Loading gallery...</p>
+        </div>`;
+
+    try {
+        const res = await fetch('/api/gallery/');
+        if (!res.ok) throw new Error(`Gallery API returned ${res.status}`);
+        const data = await res.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+            grid.innerHTML = `
+                <div class="col-span-full py-16 text-center text-gray-500 font-medium">
+                    No gallery images have been added yet.
+                </div>`;
+            return;
+        }
+
+        allGalleryImages = data;
+        renderGallery();
+    } catch (err) {
+        console.error('Gallery API error:', err);
+        grid.innerHTML = `
+            <div class="col-span-full py-16 text-center text-gray-500">
+                <p class="font-semibold text-red-500 mb-2">Could not load gallery images.</p>
+                <p class="text-sm">Please check your connection and try refreshing the page.</p>
+            </div>`;
+    }
+}
+
+// ── Render filtered images ────────────────────────────────────────────────────
+function renderGallery() {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    const filtered = currentCategorySlug === 'all'
+        ? allGalleryImages
+        : allGalleryImages.filter(img => {
+            const slug = img.category?.slug || img.category || '';
+            return slug.toLowerCase() === currentCategorySlug.toLowerCase();
+        });
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div class="col-span-full py-12 text-center text-gray-500 font-medium">
+                No images found in this category.
+            </div>`;
+        return;
+    }
+
+    filtered.forEach(img => {
+        const div = document.createElement('div');
+        div.className = 'break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl bg-gray-200 mb-4 shadow-sm hover:shadow-lg transition duration-300';
+
+        // category may be a nested object (from API) or a string (legacy)
+        const catName  = img.category?.name  || (typeof img.category === 'string' ? img.category : 'Other');
+        const catSlug  = img.category?.slug  || (typeof img.category === 'string' ? img.category : 'other');
+        const titleText = img.title || 'Trinity Real Estate University';
+        const imageUrl  = img.image_url || '';
+
+        div.innerHTML = `
+            <img
+                src="${imageUrl}"
+                loading="lazy"
+                alt="${titleText}"
+                onerror="this.onerror=null; this.src='/static/core/asset/hero.png';"
+                class="w-full rounded-xl transition duration-500 group-hover:scale-105 group-hover:brightness-90 object-cover">
+
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
+                        opacity-0 group-hover:opacity-100 transition duration-300
+                        flex flex-col justify-between p-3 text-white">
+                <div class="flex justify-between items-start">
+                    <span class="bg-yellow-400 text-gray-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        ${catName}
+                    </span>
+                    <span class="text-xs font-semibold text-gray-200 bg-black/40 px-2 py-0.5 rounded-md">
+                        ${img.year || ''}
+                    </span>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold truncate">${titleText}</h4>
+                </div>
+            </div>`;
+
+        div.onclick = () => openLightbox(img);
+        grid.appendChild(div);
+    });
+}
+
+// ── Category filter ───────────────────────────────────────────────────────────
+function filterCategory(slug, btn) {
+    currentCategorySlug = slug;
+
+    document.querySelectorAll('.cat-btn').forEach(b => {
+        b.classList.remove('bg-[#173b70]', 'text-white');
+        b.classList.add('bg-white', 'text-gray-700');
+    });
+    if (btn) {
+        btn.classList.remove('bg-white', 'text-gray-700');
+        btn.classList.add('bg-[#173b70]', 'text-white');
+    }
+
+    renderGallery();
+}
+
+// ── Lightbox ──────────────────────────────────────────────────────────────────
+function openLightbox(img) {
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxBadge = document.getElementById('lightboxBadge');
+    if (!lightbox) return;
+
+    const catName = img.category?.name || (typeof img.category === 'string' ? img.category : 'Other');
+
+    if (lightboxImg) {
+        lightboxImg.src = img.image_url || '';
+        lightboxImg.onerror = function () {
+            this.onerror = null;
+            this.src = '/static/core/asset/hero.png';
+        };
+    }
+    if (lightboxTitle) lightboxTitle.textContent = img.title || 'Campus Moment';
+    if (lightboxBadge) lightboxBadge.textContent = `${catName.toUpperCase()} · ${img.year || ''}`;
+
+    lightbox.classList.remove('hidden');
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").classList.add("hidden");
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) lightbox.classList.add('hidden');
 }
 
-function showSlide() {
-  const img = currentImages[currentIndex];
-  document.getElementById("lightboxImg").src = img.src;
-}
+// Close lightbox on Escape key
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
 
-// ================= SELECT =================
-function selectImage(e, src) {
-  e.stopPropagation();
-
-  if (selectedImages.includes(src)) return;
-
-  selectedImages.push(src);
-  renderSelected();
-}
-
-// ================= RENDER SELECTED =================
-function renderSelected() {
-  const container = document.getElementById("selectedContainer");
-  container.innerHTML = "";
-
-  selectedImages.forEach(src => {
-
-    const div = document.createElement("div");
-    div.className = "relative";
-
-    div.innerHTML = `
-      <img src="${src}" class="w-20 h-20 object-cover rounded-lg">
-
-      <button onclick="removeImage('${src}')"
-        class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center">
-
-        <svg class="w-3 h-3" fill="none" stroke="currentColor">
-          <path stroke-width="2" d="M6 6l12 12M6 18L18 6"/>
-        </svg>
-
-      </button>
-    `;
-
-    container.appendChild(div);
-  });
-}
-
-// ================= REMOVE =================
-function removeImage(src) {
-  selectedImages = selectedImages.filter(img => img !== src);
-  renderSelected();
-}
-
-// ================= FILTER =================
-function filterYear(year, btn) {
-  renderGallery(year);
-
-  document.querySelectorAll(".year-btn").forEach(b => {
-    b.classList.remove("bg-[#173b70]","text-white");
-    b.classList.add("bg-[#173b70]","text-white-600");
-  });
-
-  btn.classList.add("bg-[#173b70]","text-white");
-}
-
-// ================= INIT =================
-renderGallery(2025);
-
-//GALLERY END
-// GALLERY PICTURES END
+// ── Bootstrap ─────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    fetchCategories();
+    fetchGalleryImages();
+});

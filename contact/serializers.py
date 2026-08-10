@@ -20,12 +20,25 @@ class ContactMessageSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at', 'updated_at']
 
     def validate(self, attrs):
-        if not attrs.get('full_name'):
+        full_name = (attrs.get('full_name') or '').strip()
+        email = (attrs.get('email') or '').strip()
+        phone = (attrs.get('phone') or '').strip()
+        message = (attrs.get('message') or '').strip()
+        subject = (attrs.get('subject') or '').strip()
+
+        if not full_name:
             raise serializers.ValidationError({'full_name': 'Full name is required.'})
-        if not attrs.get('email'):
+        if not email:
             raise serializers.ValidationError({'email': 'Email is required.'})
-        if not attrs.get('phone'):
+        if not phone:
             raise serializers.ValidationError({'phone': 'Phone number is required.'})
-        if not attrs.get('message'):
+        if not message:
             raise serializers.ValidationError({'message': 'Message is required.'})
+
+        attrs['full_name'] = full_name
+        attrs['email'] = email
+        attrs['phone'] = phone
+        attrs['subject'] = subject
+        attrs['message'] = message
         return attrs
+

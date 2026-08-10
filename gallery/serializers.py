@@ -1,9 +1,25 @@
 from rest_framework import serializers
-from .models import GalleryImage
+
+from .models import GalleryCategory, GalleryImage, validate_gallery_image
+
+
+class GalleryCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GalleryCategory
+        fields = ['id', 'name', 'slug']
 
 
 class GalleryImageSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(write_only=True)
+    # Read: returns nested category object  {id, name, slug}
+    # Write: accepts category PK integer
+    category = GalleryCategorySerializer(read_only=True)
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=GalleryCategory.objects.all(),
+        source='category',
+        write_only=True,
+        required=True,
+    )
+    image = serializers.ImageField(write_only=True, required=False)
     image_url = serializers.SerializerMethodField()
 
     class Meta:
@@ -16,6 +32,7 @@ class GalleryImageSerializer(serializers.ModelSerializer):
             'description',
             'year',
             'category',
+            'category_id',
             'is_active',
             'created_at',
             'updated_at',
@@ -23,17 +40,27 @@ class GalleryImageSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'image_url', 'created_at', 'updated_at']
 
     def get_image_url(self, obj):
-        request = self.context.get('request')
-        if request is None:
+        if not obj.image:
+            return ''
+        try:
             return obj.image.url
-        return request.build_absolute_uri(obj.image.url)
+        except Exception:
+            return ''
+
+    def validate(self, attrs):
+        if self.instance is None and 'image' not in attrs:
+            raise serializers.ValidationError({'image': 'An image is required when creating a gallery item.'})
+        if not attrs.get('year'):
+            from django.utils import timezone
+            attrs['year'] = timezone.now().year
+        return attrs
 
     def validate_image(self, value):
-        allowed_types = ['image/jpeg', 'image/png', 'image/webp']
-        if value.content_type not in allowed_types:
-            raise serializers.ValidationError('Unsupported image type. Use JPG, PNG, or WEBP.')
-        if value.size > 5 * 1024 * 1024:
-            raise serializers.ValidationError('Image size must be 5MB or smaller.')
+        try:
+            validate_gallery_image(value)
+        except Exception as exc:
+            raise serializers.ValidationError(exc.messages if hasattr(exc, 'messages') else str(exc)) from exc
+
         return value
 
     def validate_year(self, value):

@@ -78,6 +78,24 @@ links.forEach(link=>{
     document.getElementById('referNumbers').classList.toggle('show', show);
   }
 
+  function extractErrorMessage(errorData) {
+    if (!errorData) return 'Submission failed. Please try again.';
+    if (typeof errorData === 'string') return errorData;
+    if (errorData.detail && typeof errorData.detail === 'string') return errorData.detail;
+    if (errorData.message && typeof errorData.message === 'string') return errorData.message;
+
+    const messages = [];
+    for (const key in errorData) {
+      const fieldName = key.replace('_', ' ');
+      if (Array.isArray(errorData[key])) {
+        messages.push(`${fieldName}: ${errorData[key].join(', ')}`);
+      } else if (typeof errorData[key] === 'string') {
+        messages.push(`${fieldName}: ${errorData[key]}`);
+      }
+    }
+    return messages.length > 0 ? messages.join('\n') : 'Submission failed. Please check your entries.';
+  }
+
   async function submitContactForm(event) {
     event.preventDefault();
     const textFields = [
@@ -91,9 +109,9 @@ links.forEach(link=>{
       if (!el || !el.value.trim()) {
         alert(`Please fill in: ${field.label}`);
         if (el) {
-          el.classList.add('error');
+          el.classList.add('border-red-500');
           el.focus();
-          el.addEventListener('input', () => el.classList.remove('error'), { once: true });
+          el.addEventListener('input', () => el.classList.remove('border-red-500'), { once: true });
         }
         return;
       }
@@ -103,13 +121,20 @@ links.forEach(link=>{
       full_name: document.getElementById('fullName').value.trim(),
       email: document.getElementById('email').value.trim(),
       phone: document.getElementById('phone').value.trim(),
-      subject: document.getElementById('subject').value.trim(),
+      subject: document.getElementById('subject')?.value?.trim() || '',
       message: document.getElementById('message').value.trim(),
     };
 
     const form = event.currentTarget;
-    const btn = form.querySelector('button[type="submit"]');
+    const btn = document.getElementById('contactSubmitBtn') || form.querySelector('button[type="submit"]');
+    const btnSpinner = document.getElementById('contactSubmitSpinner');
+    const btnIcon = document.getElementById('contactSubmitIcon');
+    const btnText = document.getElementById('contactSubmitText');
+
     if (btn) btn.disabled = true;
+    if (btnSpinner) btnSpinner.classList.remove('hidden');
+    if (btnIcon) btnIcon.classList.add('hidden');
+    if (btnText) btnText.textContent = 'Sending...';
 
     try {
       const res = await fetch('/api/contact/', {
@@ -118,18 +143,49 @@ links.forEach(link=>{
         body: JSON.stringify(payload),
       });
       if (!res.ok) {
-        const error = await res.json().catch(() => null);
-        throw new Error(error?.detail || 'Submission failed');
+        const errorData = await res.json().catch(() => null);
+        const errorMsg = extractErrorMessage(errorData);
+        throw new Error(errorMsg);
       }
-      alert('Your message has been sent successfully.');
       form.reset();
+      showContactSuccessOverlay();
     } catch (error) {
       console.error('Contact submission error:', error);
-      alert('Sorry, there was a problem sending your message. Please try again later.');
+      alert(error.message || 'Sorry, there was a problem sending your message. Please try again later.');
     } finally {
       if (btn) btn.disabled = false;
+      if (btnSpinner) btnSpinner.classList.add('hidden');
+      if (btnIcon) btnIcon.classList.remove('hidden');
+      if (btnText) btnText.textContent = 'Send Message';
     }
   }
+
+  function showContactSuccessOverlay() {
+    const overlay = document.getElementById('contactSuccessOverlay');
+    if (overlay) {
+      overlay.classList.remove('hidden');
+      setTimeout(() => {
+        overlay.classList.remove('opacity-0');
+        overlay.firstElementChild?.classList.remove('scale-95');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    } else {
+      alert('Your message has been sent successfully.');
+    }
+  }
+
+  function hideContactSuccessOverlay() {
+    const overlay = document.getElementById('contactSuccessOverlay');
+    if (overlay) {
+      overlay.classList.add('opacity-0');
+      overlay.firstElementChild?.classList.add('scale-95');
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+  }
+
 
   async function submitForm() {
     const textFields = [
@@ -226,6 +282,20 @@ links.forEach(link=>{
     contactForm.addEventListener('submit', submitContactForm);
   }
 
+  const contactOverlayCloseBtn = document.getElementById('contactOverlayCloseBtn');
+  if (contactOverlayCloseBtn) {
+    contactOverlayCloseBtn.addEventListener('click', hideContactSuccessOverlay);
+  }
+
+  const contactSuccessOverlay = document.getElementById('contactSuccessOverlay');
+  if (contactSuccessOverlay) {
+    contactSuccessOverlay.addEventListener('click', function(e) {
+      if (e.target === this) {
+        hideContactSuccessOverlay();
+      }
+    });
+  }
+
   // Close overlay on backdrop click
   const successOverlay = document.getElementById('successOverlay');
   if (successOverlay) {
@@ -235,4 +305,4 @@ links.forEach(link=>{
         document.body.style.overflow = '';
       }
     });
-  });
+  }

@@ -1,40 +1,59 @@
 from rest_framework import generics, permissions, parsers
-from .models import GalleryImage
-from .serializers import GalleryImageSerializer
+
+from .models import GalleryCategory, GalleryImage
+from .serializers import GalleryCategorySerializer, GalleryImageSerializer
+
+
+class GalleryCategoryListView(generics.ListAPIView):
+    """Public: GET /api/gallery/categories/ — returns active categories."""
+    serializer_class = GalleryCategorySerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        return GalleryCategory.objects.filter(is_active=True).order_by('name')
 
 
 class GalleryImageListCreateView(generics.ListCreateAPIView):
-    queryset = GalleryImage.objects.all()
     serializer_class = GalleryImageSerializer
-    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser, parsers.JSONParser]
 
     def get_permissions(self):
         if self.request.method == 'POST':
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
 
+    def perform_create(self, serializer):
+        serializer.save()
+
     def get_queryset(self):
-        queryset = GalleryImage.objects.filter(is_active=True)
+        qs = GalleryImage.objects.select_related('category').filter(
+            is_active=True,
+            category__is_active=True,
+        )
         year = self.request.query_params.get('year')
-        category = self.request.query_params.get('category')
+        category = self.request.query_params.get('category')  # accepts slug or id
         if year:
-            queryset = queryset.filter(year=year)
+            qs = qs.filter(year=year)
         if category:
-            queryset = queryset.filter(category=category)
-        return queryset
+            # Support filtering by slug (e.g. ?category=workshop) or by id
+            if category.isdigit():
+                qs = qs.filter(category_id=int(category))
+            else:
+                qs = qs.filter(category__slug=category)
+        return qs
 
 
 class GalleryImageDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = GalleryImage.objects.all()
     serializer_class = GalleryImageSerializer
-    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser, parsers.JSONParser]
 
     def get_permissions(self):
-        if self.request.method in ['PATCH', 'PUT', 'DELETE']:
-            return [permissions.IsAdminUser()]
-        return [permissions.AllowAny()]
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()]
+        return [permissions.IsAdminUser()]
 
     def get_queryset(self):
+        queryset = GalleryImage.objects.select_related('category')
         if self.request.method == 'GET':
-            return GalleryImage.objects.filter(is_active=True)
-        return GalleryImage.objects.all()
+            return queryset.filter(is_active=True, category__is_active=True)
+        return queryset
