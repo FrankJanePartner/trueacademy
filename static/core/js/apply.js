@@ -4,6 +4,23 @@ const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const menuIcon = document.getElementById("menuIcon");
 
+function getCookie(name) {
+  const cookie = document.cookie.split('; ').find(row => row.startsWith(`${name}=`));
+  return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : null;
+}
+
+async function getCsrfToken() {
+  let token = getCookie('csrftoken');
+  if (token) return token;
+
+  const response = await fetch('/api/csrf/', { credentials: 'same-origin' });
+  if (!response.ok) throw new Error('Could not prepare the application form. Please refresh and try again.');
+
+  token = getCookie('csrftoken');
+  if (!token) throw new Error('Could not prepare the application form. Please refresh and try again.');
+  return token;
+}
+
 // Navbar Scroll Effect
 window.addEventListener("scroll", () => {
 
@@ -143,9 +160,14 @@ links.forEach(link=>{
     btn.disabled = true;
 
     try {
+      const csrfToken = await getCsrfToken();
       const res = await fetch('/api/applications/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken,
+        },
+        credentials: 'same-origin',
         body: JSON.stringify(payload)
       });
       if (!res.ok) {

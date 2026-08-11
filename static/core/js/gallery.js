@@ -29,6 +29,21 @@ document.querySelectorAll('.desktop-nav a, .mobile-menu a').forEach(link => {
 // ── Gallery state ─────────────────────────────────────────────────────────────
 let allGalleryImages = [];
 let currentCategorySlug = 'all';
+const API_REQUEST_TIMEOUT_MS = 15000;
+const IMAGE_PLACEHOLDER_URL = '/static/core/asset/hero.png';
+
+async function fetchGalleryJson(url) {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), API_REQUEST_TIMEOUT_MS);
+
+    try {
+        const response = await fetch(url, { signal: controller.signal });
+        if (!response.ok) throw new Error(`Request returned ${response.status}`);
+        return await response.json();
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+}
 
 // ── Fetch + render categories ─────────────────────────────────────────────────
 async function fetchCategories() {
@@ -36,9 +51,7 @@ async function fetchCategories() {
     if (!container) return;
 
     try {
-        const res = await fetch('/api/gallery/categories/');
-        if (!res.ok) throw new Error(`Categories API returned ${res.status}`);
-        const categories = await res.json();
+        const categories = await fetchGalleryJson('/api/gallery/categories/');
 
         // Build dynamic buttons
         container.innerHTML = '';
@@ -60,10 +73,18 @@ async function fetchCategories() {
         });
     } catch (err) {
         console.error('Could not load gallery categories:', err);
-        // Keep a static fallback for the category bar only (not image data)
-        container.innerHTML = `
-            <button onclick="filterCategory('all', this)" class="cat-btn bg-[#173b70] text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-sm">ALL</button>
-        `;
+        // The gallery data remains API-only; keep just the universal filter available.
+        container.innerHTML = '';
+        const allBtn = document.createElement('button');
+        allBtn.className = 'cat-btn bg-[#173b70] text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-sm';
+        allBtn.textContent = 'ALL';
+        allBtn.onclick = () => filterCategory('all', allBtn);
+        container.appendChild(allBtn);
+
+        const message = document.createElement('span');
+        message.className = 'w-full text-xs text-gray-400';
+        message.textContent = 'Categories could not be loaded. Showing all images.';
+        container.appendChild(message);
     }
 }
 
@@ -82,9 +103,7 @@ async function fetchGalleryImages() {
         </div>`;
 
     try {
-        const res = await fetch('/api/gallery/');
-        if (!res.ok) throw new Error(`Gallery API returned ${res.status}`);
-        const data = await res.json();
+        const data = await fetchGalleryJson('/api/gallery/');
 
         if (!Array.isArray(data) || data.length === 0) {
             grid.innerHTML = `
@@ -134,16 +153,16 @@ function renderGallery() {
 
         // category may be a nested object (from API) or a string (legacy)
         const catName  = img.category?.name  || (typeof img.category === 'string' ? img.category : 'Other');
-        const catSlug  = img.category?.slug  || (typeof img.category === 'string' ? img.category : 'other');
         const titleText = img.title || 'Trinity Real Estate University';
         const imageUrl  = img.image_url || '';
 
         div.innerHTML = `
             <img
-                src="${imageUrl}"
+                src="${IMAGE_PLACEHOLDER_URL}"
                 loading="lazy"
+                decoding="async"
                 alt="${titleText}"
-                onerror="this.onerror=null; this.src='/static/core/asset/hero.png';"
+                onerror="this.onerror=null; this.src='${IMAGE_PLACEHOLDER_URL}';"
                 class="w-full rounded-xl transition duration-500 group-hover:scale-105 group-hover:brightness-90 object-cover">
 
             <!-- Hover overlay -->
@@ -162,6 +181,17 @@ function renderGallery() {
                     <h4 class="text-sm font-semibold truncate">${titleText}</h4>
                 </div>
             </div>`;
+
+        // Do not expose a browser broken-image icon while the media file is loading.
+        // The API image URL remains the source of truth and replaces this placeholder on load.
+        if (imageUrl) {
+            const displayedImage = div.querySelector('img');
+            const preloadedImage = new Image();
+            preloadedImage.onload = () => {
+                displayedImage.src = imageUrl;
+            };
+            preloadedImage.src = imageUrl;
+        }
 
         div.onclick = () => openLightbox(img);
         grid.appendChild(div);

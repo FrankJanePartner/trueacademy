@@ -19,6 +19,7 @@ from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from trueacademy.views import csrf_bootstrap
 from contact.views import ContactMessageListCreateView, ContactMessageDetailView
 from applications.views import ApplicationListCreateView, ApplicationDetailView
 from gallery.views import GalleryImageListCreateView, GalleryImageDetailView, GalleryCategoryListView
@@ -32,6 +33,7 @@ urlpatterns = [
     path('contact.html', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('apply.html', TemplateView.as_view(template_name='apply.html'), name='apply'),
     path('admin/', admin.site.urls),
+    path('api/csrf/', csrf_bootstrap, name='csrf-bootstrap'),
     re_path(r'^api/contact/?$', ContactMessageListCreateView.as_view(), name='contact-list-create'),
     path('api/contact/<int:pk>/', ContactMessageDetailView.as_view(), name='contact-detail'),
     re_path(r'^api/applications/?$', ApplicationListCreateView.as_view(), name='application-list-create'),
