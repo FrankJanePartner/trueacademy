@@ -13,7 +13,7 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY =  'django-insecure-af29)q1vxvghnqn)m8+@5-f3abnrb$1^q92yudog-5j=c3hk&z'
 
 DEBUG = True
-ALLOWED_HOSTS = []#'trinityreu.academy', 'localhost:8000']
+ALLOWED_HOSTS = ['trueacademy-9bfv.vercel.app', 'trinityreu.academy', 'localhost:8000']
 
 
 # Application definition
