@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.conf import settings
-from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
+from django.views.static import serve
 from trueacademy.views import csrf_bootstrap
 from contact.views import ContactMessageListCreateView, ContactMessageDetailView
 from applications.views import ApplicationListCreateView, ApplicationDetailView
@@ -26,12 +27,12 @@ from gallery.views import GalleryImageListCreateView, GalleryImageDetailView, Ga
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
-    path('index.html', TemplateView.as_view(template_name='index.html'), name='index'),
-    path('about.html', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('cohort.html', TemplateView.as_view(template_name='cohort.html'), name='cohort'),
-    path('gallery.html', TemplateView.as_view(template_name='gallery.html'), name='gallery'),
-    path('contact.html', TemplateView.as_view(template_name='contact.html'), name='contact'),
-    path('apply.html', TemplateView.as_view(template_name='apply.html'), name='apply'),
+    path('index', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('about', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('cohort', TemplateView.as_view(template_name='cohort.html'), name='cohort'),
+    path('gallery', TemplateView.as_view(template_name='gallery.html'), name='gallery'),
+    path('contact', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('apply', TemplateView.as_view(template_name='apply.html'), name='apply'),
     path('admin/', admin.site.urls),
     path('api/csrf/', csrf_bootstrap, name='csrf-bootstrap'),
     re_path(r'^api/contact/?$', ContactMessageListCreateView.as_view(), name='contact-list-create'),
@@ -42,7 +43,15 @@ urlpatterns = [
     path('api/gallery/categories/', GalleryCategoryListView.as_view(), name='gallery-categories'),
     path('api/gallery/', GalleryImageListCreateView.as_view(), name='gallery-list-create'),
     path('api/gallery/<int:pk>/', GalleryImageDetailView.as_view(), name='gallery-detail'),
-]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Existing template links remain valid while the routes above stay canonical.
+    path('index.html', RedirectView.as_view(pattern_name='index', permanent=False)),
+    path('about.html', RedirectView.as_view(pattern_name='about', permanent=False)),
+    path('cohort.html', RedirectView.as_view(pattern_name='cohort', permanent=False)),
+    path('gallery.html', RedirectView.as_view(pattern_name='gallery', permanent=False)),
+    path('contact.html', RedirectView.as_view(pattern_name='contact', permanent=False)),
+    path('apply.html', RedirectView.as_view(pattern_name='apply', permanent=False)),
+
+    # WhiteNoise serves static assets but not files uploaded through Django admin.
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+]

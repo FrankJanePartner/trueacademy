@@ -107,7 +107,6 @@ links.forEach(link=>{
       { id: 'phone', label: 'Phone Number' },
       { id: 'email', label: 'Email Address' },
       { id: 'location', label: 'City / State' },
-      { id: 'challenge', label: 'Biggest Challenge' },
     ];
     let valid = true;
     for (const field of textFields) {
@@ -120,20 +119,13 @@ links.forEach(link=>{
       }
     }
     // Validate radios
-    const radioNames = ['involvement', 'experience', 'attend', 'ethics', 'source', 'refer', 'interest'];
+    const radioNames = ['involvement', 'attend', 'ethics', 'source', 'refer'];
     for (const name of radioNames) {
       if (!document.querySelector(`[name="${name}"]:checked`)) {
         alert('Please complete all required selections.');
         return;
       }
     }
-    // Validate checkboxes
-    const interests = [...document.querySelectorAll('[name="interest"]:checked')].map(i => i.value);
-    if (interests.length === 0) {
-      alert('Please select at least one area of real estate interest.');
-      return;
-    }
-
     // Gather data
     const payload = {
       full_name: document.getElementById('fullName').value.trim(),
@@ -141,16 +133,12 @@ links.forEach(link=>{
       email: document.getElementById('email').value.trim(),
       location: document.getElementById('location').value.trim(),
       involvement: document.querySelector('[name="involvement"]:checked').value,
-      experience: document.querySelector('[name="experience"]:checked').value,
-      interests,
-      challenge: document.getElementById('challenge').value.trim(),
       attend_all: document.querySelector('[name="attend"]:checked').value,
       ethics_commitment: document.querySelector('[name="ethics"]:checked').value,
       heard_from: document.querySelector('[name="source"]:checked').value,
       refer_friends: document.querySelector('[name="refer"]:checked').value,
       referral_numbers: document.getElementById('referPhones')?.value?.trim() || '',
-      submitted_at: new Date().toISOString(),
-      cohort: 'Cohort 4'
+      cohort: 'Cohort 5'
     };
 
     // Show loading

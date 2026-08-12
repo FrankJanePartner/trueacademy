@@ -17,26 +17,41 @@ class Application(models.Model):
     ]
 
     full_name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=50)
+    phone = models.CharField(max_length=50, blank=True)
     email = models.EmailField()
-    location = models.CharField(max_length=255)
-    involvement = models.CharField(max_length=100)
-    experience = models.CharField(max_length=100)
-    interests = models.JSONField()
-    challenge = models.TextField()
-    attend_all = models.CharField(max_length=50)
-    ethics_commitment = models.CharField(max_length=50)
-    heard_from = models.CharField(max_length=100)
-    refer_friends = models.CharField(max_length=50)
+    location = models.CharField(max_length=255, blank=True)
+
+    involvement = models.CharField(max_length=100, blank=True)
+    experience = models.CharField(max_length=100, blank=True)
+    interests = models.JSONField(blank=True, null=True)
+    challenge = models.TextField(blank=True)
+
+    attend_all = models.CharField(max_length=50, blank=True)
+    ethics_commitment = models.CharField(max_length=50, blank=True)
+
+    heard_from = models.CharField(max_length=100, blank=True)
+    refer_friends = models.CharField(max_length=50, blank=True)
     referral_numbers = models.TextField(blank=True)
-    cohort = models.CharField(max_length=100)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_PENDING)
-    submitted_at = models.DateTimeField()
+
+    cohort = models.CharField(max_length=100, blank=True)
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default=STATUS_PENDING
+    )
+
+    submitted_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['-submitted_at']
-        unique_together = [['email', 'cohort']]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['email', 'cohort'],
+                name='unique_application_per_email_cohort'
+            )
+        ]
 
     def __str__(self):
         return f"{self.full_name} ({self.email}) - {self.cohort}"

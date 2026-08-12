@@ -2,7 +2,6 @@ import json
 
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
-from django.utils import timezone
 
 
 class ApplicationCsrfTests(TestCase):
@@ -23,16 +22,12 @@ class ApplicationCsrfTests(TestCase):
                 'email': 'applicant@example.com',
                 'location': 'Lagos',
                 'involvement': 'Student',
-                'experience': 'Beginner',
-                'interests': ['Property Investment'],
-                'challenge': 'Finding practical real estate training.',
                 'attend_all': 'yes',
                 'ethics_commitment': 'yes',
                 'heard_from': 'Website',
                 'refer_friends': 'no',
                 'referral_numbers': '',
                 'cohort': 'CSRF Test Cohort',
-                'submitted_at': timezone.now().isoformat(),
             }),
             content_type='application/json',
             HTTP_X_CSRFTOKEN=csrf_token,

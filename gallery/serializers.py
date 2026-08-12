@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import GalleryCategory, GalleryImage, validate_gallery_image
+from .models import GalleryCategory, GalleryImage
 
 
 class GalleryCategorySerializer(serializers.ModelSerializer):
@@ -28,12 +28,8 @@ class GalleryImageSerializer(serializers.ModelSerializer):
             'id',
             'image',
             'image_url',
-            'title',
-            'description',
-            'year',
             'category',
             'category_id',
-            'is_active',
             'created_at',
             'updated_at',
         ]
@@ -50,20 +46,4 @@ class GalleryImageSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         if self.instance is None and 'image' not in attrs:
             raise serializers.ValidationError({'image': 'An image is required when creating a gallery item.'})
-        if not attrs.get('year'):
-            from django.utils import timezone
-            attrs['year'] = timezone.now().year
         return attrs
-
-    def validate_image(self, value):
-        try:
-            validate_gallery_image(value)
-        except Exception as exc:
-            raise serializers.ValidationError(exc.messages if hasattr(exc, 'messages') else str(exc)) from exc
-
-        return value
-
-    def validate_year(self, value):
-        if value < 2000 or value > 2100:
-            raise serializers.ValidationError('Year must be between 2000 and 2100.')
-        return value

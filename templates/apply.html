@@ -86,7 +86,7 @@
 
 <div class="main-wrap">
 
-  <form method="post" class="form-card" id="applicationForm" onsubmit="submitForm(event)">
+  <form method="post" class="form-card" id="applicationForm">
     <div class="form-section-header">
       <h3>Scholarship Application Form</h3>
       <p>All fields marked with <span style="color:var(--orange)">*</span> are required. Please answer honestly — selections are reviewed carefully.</p>
@@ -134,35 +134,38 @@
           <label class="radio-item" onclick="selectRadio(this,'involvement')"><input type="radio" name="involvement" value="other"><div class="custom-radio"></div><span>Other</span></label>
         </div>
       </div>
+      
+      <!--I want to remove from this part-->
+      <!--<div class="form-group">-->
+      <!--  <label>How many years of experience do you have in real estate? <span class="req">*</span></label>-->
+      <!--  <div class="options-group grid-2" id="experienceGroup">-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="none"><div class="custom-radio"></div><span>None</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="<1yr"><div class="custom-radio"></div><span>Less than 1 year</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="1-3yr"><div class="custom-radio"></div><span>1–3 years</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="4-7yr"><div class="custom-radio"></div><span>4–7 years</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="8+yr"><div class="custom-radio"></div><span>8+ years</span></label>-->
+      <!--  </div>-->
+      <!--</div>-->
 
-      <div class="form-group">
-        <label>How many years of experience do you have in real estate? <span class="req">*</span></label>
-        <div class="options-group grid-2" id="experienceGroup">
-          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="none"><div class="custom-radio"></div><span>None</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="<1yr"><div class="custom-radio"></div><span>Less than 1 year</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="1-3yr"><div class="custom-radio"></div><span>1–3 years</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="4-7yr"><div class="custom-radio"></div><span>4–7 years</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'experience')"><input type="radio" name="experience" value="8+yr"><div class="custom-radio"></div><span>8+ years</span></label>
-        </div>
-      </div>
+      <!--<div class="form-group">-->
+      <!--  <label>Which area of real estate interests you most? <span class="req">*</span> <span class="hint">(Select all that apply)</span></label>-->
+      <!--  <div class="options-group grid-2" id="interest">-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Land Sales"><div class="custom-radio"></div><span>Land Sales</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Residential Rentals"><div class="custom-radio"></div><span>Residential Rentals</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Development"><div class="custom-radio"></div><span>Property Developments</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Investment"><div class="custom-radio"></div><span>Property Investment</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Management"><div class="custom-radio"></div><span>Property Management</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Real Estate Marketing"><div class="custom-radio"></div><span>Real Estate Marketing</span></label>-->
+      <!--    <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Other"><div class="custom-radio"></div><span>Other</span></label>-->
+      <!--  </div>-->
+      <!--</div>-->
 
-      <div class="form-group">
-        <label>Which area of real estate interests you most? <span class="req">*</span> <span class="hint">(Select all that apply)</span></label>
-        <div class="options-group grid-2" id="interest">
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Land Sales"><div class="custom-radio"></div><span>Land Sales</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Residential Rentals"><div class="custom-radio"></div><span>Residential Rentals</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Development"><div class="custom-radio"></div><span>Property Developments</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Investment"><div class="custom-radio"></div><span>Property Investment</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Property Management"><div class="custom-radio"></div><span>Property Management</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Real Estate Marketing"><div class="custom-radio"></div><span>Real Estate Marketing</span></label>
-          <label class="radio-item" onclick="selectRadio(this,'interest')"><input type="radio" name="interest" value="Other"><div class="custom-radio"></div><span>Other</span></label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="challenge">What is your biggest challenge in real estate right now? <span class="req">*</span></label>
-        <textarea id="challenge" placeholder="Describe your current challenges, goals, or why you want to join this program..."></textarea>
-      </div>
+      <!--<div class="form-group">-->
+      <!--  <label for="challenge">What is your biggest challenge in real estate right now? <span class="req">*</span></label>-->
+      <!--  <textarea id="challenge" placeholder="Describe your current challenges, goals, or why you want to join this program..."></textarea>-->
+      <!--</div>-->
+      
+      <!--The end of the part that i want to remove-->
 
       <div class="form-section-divider">
         <h4>Commitment &amp; Values</h4>

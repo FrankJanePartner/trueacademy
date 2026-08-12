@@ -10,7 +10,7 @@ class GalleryCategoryListView(generics.ListAPIView):
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
-        return GalleryCategory.objects.filter(is_active=True).order_by('name')
+        return GalleryCategory.objects.order_by('name')
 
 
 class GalleryImageListCreateView(generics.ListCreateAPIView):
@@ -26,14 +26,8 @@ class GalleryImageListCreateView(generics.ListCreateAPIView):
         serializer.save()
 
     def get_queryset(self):
-        qs = GalleryImage.objects.select_related('category').filter(
-            is_active=True,
-            category__is_active=True,
-        )
-        year = self.request.query_params.get('year')
+        qs = GalleryImage.objects.select_related('category')
         category = self.request.query_params.get('category')  # accepts slug or id
-        if year:
-            qs = qs.filter(year=year)
         if category:
             # Support filtering by slug (e.g. ?category=workshop) or by id
             if category.isdigit():
@@ -53,7 +47,4 @@ class GalleryImageDetailView(generics.RetrieveUpdateDestroyAPIView):
         return [permissions.IsAdminUser()]
 
     def get_queryset(self):
-        queryset = GalleryImage.objects.select_related('category')
-        if self.request.method == 'GET':
-            return queryset.filter(is_active=True, category__is_active=True)
-        return queryset
+        return GalleryImage.objects.select_related('category')
