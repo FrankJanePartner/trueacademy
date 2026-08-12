@@ -10,7 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables from .env if present
 load_dotenv(BASE_DIR / '.env')
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-unsafe-default')
+SECRET_KEY =  'django-insecure-af29)q1vxvghnqn)m8+@5-f3abnrb$1^q92yudog-5j=c3hk&z'
+
 DEBUG = True
 ALLOWED_HOSTS = []#'trinityreu.academy', 'localhost:8000']
 
