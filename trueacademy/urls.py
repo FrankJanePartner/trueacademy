@@ -45,12 +45,12 @@ urlpatterns = [
     path('api/gallery/<int:pk>/', GalleryImageDetailView.as_view(), name='gallery-detail'),
 
     # Existing template links remain valid while the routes above stay canonical.
-    path('index.html', RedirectView.as_view(pattern_name='index', permanent=False)),
-    path('about.html', RedirectView.as_view(pattern_name='about', permanent=False)),
-    path('cohort.html', RedirectView.as_view(pattern_name='cohort', permanent=False)),
-    path('gallery.html', RedirectView.as_view(pattern_name='gallery', permanent=False)),
-    path('contact.html', RedirectView.as_view(pattern_name='contact', permanent=False)),
-    path('apply.html', RedirectView.as_view(pattern_name='apply', permanent=False)),
+    path('index', RedirectView.as_view(pattern_name='index', permanent=False)),
+    path('about', RedirectView.as_view(pattern_name='about', permanent=False)),
+    path('cohort', RedirectView.as_view(pattern_name='cohort', permanent=False)),
+    path('gallery', RedirectView.as_view(pattern_name='gallery', permanent=False)),
+    path('contact', RedirectView.as_view(pattern_name='contact', permanent=False)),
+    path('apply', RedirectView.as_view(pattern_name='apply', permanent=False)),
 
     # WhiteNoise serves static assets but not files uploaded through Django admin.
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
